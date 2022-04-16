@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <View
+        android:layout_width="350dp"
+        android:layout_height="600dp"
+        android:background="@drawable/boxframe"
+        android:elevation="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+    </View>
+
+    <TableLayout
+        android:id="@+id/TotalCreditTable"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/tableframe"
+        android:elevation="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2">
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="총 신청학점"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="총 이수학점"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/applyInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/acquireInfo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/MajorTable"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/tableframe"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toStartOf="@id/LiberalTable"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/TotalCreditTable">
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="전공"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="구분"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="신청"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="취득"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/LiberalTable"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/tableframe"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toStartOf="@id/EtcTable"
+        app:layout_constraintStart_toEndOf="@id/MajorTable"
+        app:layout_constraintTop_toBottomOf="@id/TotalCreditTable">
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="교양"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="구분"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="신청"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="취득"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:id="@+id/EtcTable"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/tableframe"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/LiberalTable"
+        app:layout_constraintTop_toBottomOf="@id/TotalCreditTable">
+
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="기타"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="구분"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="신청"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="취득"
+                android:background="@drawable/tableframe"
+                android:textColor="@color/black"/>
+        </TableRow>
+    </TableLayout>
+
+    <ExpandableListView
+        android:id="@+id/exlistview"
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:layout_margin="20dp"
+        android:clickable="true"
+        android:groupIndicator="@color/black"
+        android:divider="@color/black"
+        android:dividerHeight="0dp"
+        android:scrollbars="none"
+        android:background="@drawable/tableframe"
+        android:elevation="10dp"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintHeight_max="100dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/MajorTable" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

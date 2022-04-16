@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <View
+        android:layout_width="350dp"
+        android:layout_height="292dp"
+        android:background="@drawable/boxframe"
+        android:elevation="9dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/loginID"
+        android:layout_width="306dp"
+        android:layout_height="52dp"
+        android:layout_margin="10dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/boxframe"
+        android:elevation="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#8b8b8b"
+        android:singleLine="true"
+        android:hint="아이디"
+        app:layout_constraintVertical_bias="0.38"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/loginPW"
+        android:layout_width="306dp"
+        android:layout_height="52dp"
+        android:layout_margin="10dp"
+        android:paddingLeft="20dp"
+        android:background="@drawable/boxframe"
+        android:elevation="10dp"
+        android:textColor="@color/black"
+        android:textColorHint="#8b8b8b"
+        android:singleLine="true"
+        android:hint="비밀번호"
+        android:password="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginID" />
+
+    <CheckBox
+        android:id="@+id/loginAuto"
+        android:text="자동 로그인"
+        android:textColor="@color/black"
+        android:elevation="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintTop_toBottomOf="@+id/loginPW"/>
+
+
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="306dp"
+        android:layout_height="52dp"
+        android:background="@drawable/boxframe"
+        android:elevation="10dp"
+        android:translationZ="10dp"
+        android:stateListAnimator="@null"
+        android:text="로그인"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginAuto" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

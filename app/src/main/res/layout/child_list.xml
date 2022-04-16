@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tableframe"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/subjectName"
+        android:textColor="@color/black"
+        android:textSize="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/subjectRank"
+        android:textColor="@color/black"
+        android:textSize="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/subjectName"/>
+
+    <TextView
+        android:id="@+id/subjectGrade"
+        android:textColor="@color/black"
+        android:textSize="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/subjectRank"/>
+
+    <TextView
+        android:id="@+id/subjectDivide"
+        android:textColor="@color/black"
+        android:textSize="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/subjectGrade"/>
+
+    <TextView
+        android:id="@+id/subjectCredit"
+        android:textColor="@color/black"
+        android:textSize="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/subjectDivide"/>
+
+    <TextView
+        android:id="@+id/subjectNumber"
+        android:textColor="@color/black"
+        android:textSize="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/subjectCredit"/>
+
+    <TextView
+        android:id="@+id/subjectProf"
+        android:textColor="@color/black"
+        android:textSize="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/subjectNumber"/>
+
+</RelativeLayout>
