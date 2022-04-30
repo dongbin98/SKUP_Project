@@ -79,6 +79,70 @@
             app:layout_constraintRight_toRightOf="parent"/>
 
         <Button
+            android:id="@+id/lecturePlanBtn"
+            android:layout_width="206dp"
+            android:layout_height="52dp"
+            android:textSize="15dp"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:stateListAnimator="@null"
+            android:background="@drawable/boxframe"
+            android:text="강의계획서"
+           android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/lectureBtn"
+            app:layout_constraintLeft_toLeftOf="@id/lectureBtn"/>
+
+        <Button
+            android:id="@+id/lectureTimetableBtn"
+            android:layout_width="206dp"
+            android:layout_height="52dp"
+            android:textSize="15dp"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:stateListAnimator="@null"
+            android:background="@drawable/boxframe"
+            android:text="강의시간표"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/lecturePlanBtn"
+            app:layout_constraintLeft_toLeftOf="@id/lectureBtn"/>
+
+        <Button
+            android:id="@+id/lectureEvaluationBtn"
+            android:layout_width="206dp"
+            android:layout_height="52dp"
+            android:textSize="15dp"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:stateListAnimator="@null"
+            android:background="@drawable/boxframe"
+            android:text="강의평가"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/lectureTimetableBtn"
+            app:layout_constraintLeft_toLeftOf="@id/lectureBtn"/>
+
+        <Button
+            android:id="@+id/attendanceBtn"
+            android:layout_width="206dp"
+            android:layout_height="52dp"
+            android:textSize="15dp"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            android:translationZ="10dp"
+            android:stateListAnimator="@null"
+            android:background="@drawable/boxframe"
+            android:text="출결조회"
+            android:visibility="gone"
+            app:layout_constraintTop_toBottomOf="@id/lectureEvaluationBtn"
+            app:layout_constraintLeft_toLeftOf="@id/lectureBtn"/>
+
+        <Button
             android:id="@+id/gradeBtn"
             android:layout_width="306dp"
             android:layout_height="52dp"
@@ -91,12 +155,12 @@
             android:stateListAnimator="@null"
             android:background="@drawable/boxframe"
             android:text="성적"
-            app:layout_constraintTop_toBottomOf="@id/lectureBtn"
+            app:layout_constraintTop_toBottomOf="@id/attendanceBtn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <Button
-            android:id="@+id/Gradeinfo"
+            android:id="@+id/gradeTermBtn"
             android:layout_width="206dp"
             android:layout_height="52dp"
             android:textSize="15dp"
@@ -124,12 +188,12 @@
             android:stateListAnimator="@null"
             android:background="@drawable/boxframe"
             android:text="등록"
-            app:layout_constraintTop_toBottomOf="@id/Gradeinfo"
+            app:layout_constraintTop_toBottomOf="@id/gradeTermBtn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <Button
-            android:id="@+id/Tuitioninfo"
+            android:id="@+id/tuitionInfoBtn"
             android:layout_width="206dp"
             android:layout_height="52dp"
             android:textSize="15dp"
@@ -157,7 +221,7 @@
             android:stateListAnimator="@null"
             android:background="@drawable/boxframe"
             android:text="장학"
-            app:layout_constraintTop_toBottomOf="@id/Tuitioninfo"
+            app:layout_constraintTop_toBottomOf="@id/tuitionInfoBtn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
@@ -179,7 +243,7 @@
             app:layout_constraintRight_toRightOf="parent"/>
 
         <Button
-            android:id="@+id/Graduateinfo"
+            android:id="@+id/graduateInfoBtn"
             android:layout_width="206dp"
             android:layout_height="52dp"
             android:textSize="15dp"
@@ -207,12 +271,12 @@
             android:stateListAnimator="@null"
             android:background="@drawable/boxframe"
             android:text="비교과프로그램"
-            app:layout_constraintTop_toBottomOf="@id/Graduateinfo"
+            app:layout_constraintTop_toBottomOf="@id/graduateInfoBtn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 
         <Button
-            android:id="@+id/Normalpoteninfo"
+            android:id="@+id/n_potenInfoBtn"
             android:layout_width="206dp"
             android:layout_height="52dp"
             android:textSize="15dp"
@@ -228,7 +292,7 @@
             app:layout_constraintLeft_toLeftOf="@id/nonLectureBtn"/>
 
         <Button
-            android:id="@+id/Majorpoteninfo"
+            android:id="@+id/m_potenInfoBtn"
             android:layout_width="206dp"
             android:layout_height="52dp"
             android:textSize="15dp"
@@ -240,7 +304,7 @@
             android:background="@drawable/boxframe"
             android:text="전공역량강화프로그램"
             android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@id/Normalpoteninfo"
+            app:layout_constraintTop_toBottomOf="@id/n_potenInfoBtn"
             app:layout_constraintLeft_toLeftOf="@id/nonLectureBtn"/>
 
         <Button
@@ -256,7 +320,7 @@
             android:stateListAnimator="@null"
             android:background="@drawable/boxframe"
             android:text="증명 및 발급"
-            app:layout_constraintTop_toBottomOf="@id/Majorpoteninfo"
+            app:layout_constraintTop_toBottomOf="@id/m_potenInfoBtn"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
 

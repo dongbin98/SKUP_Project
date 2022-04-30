@@ -154,6 +154,10 @@ public class GraduateActivity extends AppCompatActivity {
             while ((str = reader.readLine()) != null) {
                 sb.append(str);
             }
+            String json = sb.toString();
+
+
+
             reader.close();
             os.close();
 
