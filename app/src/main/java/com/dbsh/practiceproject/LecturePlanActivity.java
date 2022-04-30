@@ -31,8 +31,8 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class lecturePlanActivity extends AppCompatActivity {
-    private static final String majorPotenURL = "https://sportal.skuniv.ac.kr/sportal/common/selectList.sku";
+public class LecturePlanActivity extends AppCompatActivity {
+    private static final String lecturePlanURL = "https://sportal.skuniv.ac.kr/sportal/common/selectList.sku";
     private static final String POST = "POST";
     HttpURLConnection connection;
 
@@ -208,7 +208,7 @@ public class lecturePlanActivity extends AppCompatActivity {
             // ----------------------------
             // URL 설정 및 접속
             // ----------------------------
-            URL url = new URL(majorPotenURL);
+            URL url = new URL(lecturePlanURL);
             connection = (HttpURLConnection) url.openConnection();
             // Bearer
             connection.setRequestProperty("Authorization", "Bearer " + token);

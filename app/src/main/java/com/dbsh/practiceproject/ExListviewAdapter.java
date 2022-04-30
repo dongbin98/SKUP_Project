@@ -53,7 +53,7 @@ public class ExListviewAdapter extends BaseExpandableListAdapter {
         Context context = viewGroup.getContext();
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.parent_list, viewGroup, false);
+            view = inflater.inflate(R.layout.grade_parent_list, viewGroup, false);
         }
         TextView yearterm = (TextView) view.findViewById(R.id.yearterm);
         TextView totCredit = (TextView) view.findViewById(R.id.totCredit);
@@ -73,7 +73,7 @@ public class ExListviewAdapter extends BaseExpandableListAdapter {
         Context context = viewGroup.getContext();
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.child_list, viewGroup, false);
+            view = inflater.inflate(R.layout.grade_child_list, viewGroup, false);
         }
 
         TextView subjectName = (TextView) view.findViewById(R.id.subjectName);

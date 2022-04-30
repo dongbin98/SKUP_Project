@@ -80,7 +80,7 @@ public class MenuActivity extends AppCompatActivity {
         lecturePlanBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent lecturePlanIntent = new Intent(MenuActivity.this, lecturePlanActivity.class);
+                Intent lecturePlanIntent = new Intent(MenuActivity.this, LecturePlanActivity.class);
                 startActivity(lecturePlanIntent);
             }
         });
@@ -105,7 +105,8 @@ public class MenuActivity extends AppCompatActivity {
         attendanceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent attendanceIntent = new Intent(MenuActivity.this, AttendanceActivity.class);
+                startActivity(attendanceIntent);
             }
         });
 
