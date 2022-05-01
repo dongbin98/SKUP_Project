@@ -8,10 +8,11 @@
 
     <TextView
         android:id="@+id/lectureplan_subject"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_weight="5"
         android:text="교과목명"
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,10 +21,11 @@
 
     <TextView
         android:id="@+id/lectureplan_cd"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_weight="2"
         android:text="학수번호"
         app:layout_constraintEnd_toStartOf="@id/lectureplan_professor"
         app:layout_constraintTop_toTopOf="parent"
@@ -31,10 +33,11 @@
 
     <TextView
         android:id="@+id/lectureplan_professor"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_weight="2"
         android:text="교수명"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

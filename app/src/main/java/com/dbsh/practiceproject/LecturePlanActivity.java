@@ -115,9 +115,21 @@ public class LecturePlanActivity extends AppCompatActivity {
         adapter.setOnItemClicklistener(new PlanClickListener() {
             @Override
             public void onItemClick(PlanAdapter.PlanHolder holder, View view, int position) {
-                System.out.println(adapter.getSubjectCD(position));
-                System.out.println(adapter.getClassNumber(position));
-                System.out.println(adapter.getProfessorID(position));
+                String cd = adapter.getSubjectCD(position);
+                String cn = adapter.getClassNumber(position);
+                String pi = adapter.getProfessorID(position);
+                String dn = adapter.getDeptName(position);
+                String pn = adapter.getProfessorName(position);
+                String sn = adapter.getSubjectName(position);
+                if(cd != "null" && pn != "null" && dn != "null") {
+                    System.out.println(cd + pn + dn);
+                    Intent detailIntent = new Intent(LecturePlanActivity.this, LecturePlanDetailActivity.class);
+                    detailIntent.putExtra("cd", cd);
+                    detailIntent.putExtra("cn", cn);
+                    detailIntent.putExtra("pi", pi);
+                    detailIntent.putExtra("sn", sn);
+                    startActivity(detailIntent);
+                }
             }
         });
 

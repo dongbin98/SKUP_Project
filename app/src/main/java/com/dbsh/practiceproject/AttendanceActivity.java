@@ -212,11 +212,10 @@ public class AttendanceActivity extends AppCompatActivity {
                     data.add(new AttendanceAdapter.AttendanceItem(AttendanceAdapter.HEADER,
                             jsonArray.getJSONObject(i).get("SUBJ_NM").toString(),
                             jsonArray.getJSONObject(i).get("PROF_NM").toString(),
-                            jsonArray.getJSONObject(i).get("SUBJ_CD").toString()));
-                    // 세부항목 가져오기 위해 함수호출
-                    getDetailAttendance(token, id, year, term,
                             jsonArray.getJSONObject(i).get("SUBJ_CD").toString(),
-                            jsonArray.getJSONObject(i).get("CLSS_NUMB").toString());
+                            getDetailAttendance(token, id, year, term,
+                                    jsonArray.getJSONObject(i).get("SUBJ_CD").toString(),
+                                    jsonArray.getJSONObject(i).get("CLSS_NUMB").toString())));
                 }
             }
         } catch (MalformedURLException exception) {
@@ -228,12 +227,13 @@ public class AttendanceActivity extends AppCompatActivity {
         }
     }
 
-    public void getDetailAttendance(String token, String id, String year, String term, String CD, String NUMB) {
+    public ArrayList<ArrayList<String>> getDetailAttendance(String token, String id, String year, String term, String CD, String NUMB) {
+        ArrayList<ArrayList<String>> subArray = new ArrayList<>();
         try {
             // ----------------------------
             // URL 설정 및 접속
             // ----------------------------
-            URL url = new URL(attendanceURL);
+            URL url = new URL(attendanceDURL);
             connection = (HttpURLConnection) url.openConnection();
             // Bearer
             connection.setRequestProperty("Authorization", "Bearer " + token);
@@ -295,18 +295,23 @@ public class AttendanceActivity extends AppCompatActivity {
                 int count = Integer.parseInt(jsonResponse.get("COUNT").toString());
 
                 for (int i = 0; i < count; i++) {
-                    data.add(new AttendanceAdapter.AttendanceItem(AttendanceAdapter.CHILD,
-                            jsonArray.getJSONObject(i).get("CHECK_DATE_NM").toString(),
-                            jsonArray.getJSONObject(i).get("WEEK_TIME").toString(),
-                            jsonArray.getJSONObject(i).get("ABSN_TIME").toString()));
+                    ArrayList<String> tmp = new ArrayList<>();
+                    tmp.add(jsonArray.getJSONObject(i).get("CHECK_DATE_NM").toString());
+                    tmp.add(jsonArray.getJSONObject(i).get("WEEK_TIME").toString());
+                    tmp.add(jsonArray.getJSONObject(i).get("ABSN_TIME").toString());
+                    subArray.add(tmp);
                 }
             }
+            return subArray;
         } catch (MalformedURLException exception) {
             exception.printStackTrace();
+            return null;
         } catch (IOException exception) {
             exception.printStackTrace();
+            return null;
         } catch (JSONException exception) {
             exception.printStackTrace();
+            return null;
         }
     }
 }

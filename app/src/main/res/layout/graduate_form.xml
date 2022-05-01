@@ -15,14 +15,14 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent">
 
-        <TableRow>
+        <TableRow
+            android:background="@drawable/tableframe">
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="2"
                 android:textColor="@color/black"
-                android:background="@drawable/tableframe"
                 android:text="이수구분"/>
             <TextView
                 android:layout_width="0dp"
@@ -30,7 +30,6 @@
                 android:layout_weight="3"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:background="@drawable/tableframe"
                 android:text="영역구분"/>
             <TextView
                 android:layout_width="0dp"
@@ -38,7 +37,6 @@
                 android:layout_weight="5"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:background="@drawable/tableframe"
                 android:text="교과목명"/>
             <TextView
                 android:layout_width="0dp"
@@ -46,7 +44,6 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:background="@drawable/tableframe"
                 android:text="평점"/>
             <TextView
                 android:layout_width="0dp"
@@ -54,7 +51,6 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:textColor="@color/black"
-                android:background="@drawable/tableframe"
                 android:text="비고"/>
         </TableRow>
     </TableLayout>

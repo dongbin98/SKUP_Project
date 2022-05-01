@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_subjectName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="교과목명 예시"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강의계획서 개요"
+            android:textStyle="bold"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/lectureplan_detail_info_subjectName"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="교과목 정보"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_subjectName"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TableLayout
+            android:id="@+id/lectureplan_detail_info_subjectTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/tableframe"
+            android:stretchColumns="0,1"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <TableRow
+                android:background="@drawable/tableframe">
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_subject"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="교과목명\n예시"/>
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_cd"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="학수번호-분반\n예시"/>
+            </TableRow>
+            <TableRow
+                android:background="@drawable/tableframe">
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_dept"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="개설학과(부)\n예시"/>
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_term"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="개설학기\n예시"/>
+            </TableRow>
+            <TableRow
+                android:background="@drawable/tableframe">
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_point"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="학점 및 시수\n예시"/>
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_evalLevel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="대상학년\n예시"/>
+            </TableRow>
+            <TableRow
+                android:background="@drawable/tableframe">
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_completeName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="이수구분\n예시"/>
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_day"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="강의시간 및 교시\n예시"/>
+            </TableRow>
+            <TableRow
+                android:background="@drawable/tableframe">
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_room"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="강의실\n예시"/>
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="담당교수정보"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_subjectTable"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TableLayout
+            android:id="@+id/lectureplan_detail_info_professorTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/tableframe"
+            android:stretchColumns="0,1"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+            <TableRow
+                android:background="@drawable/tableframe">
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_professorName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="교수명\n예시"/>
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_professorPhone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="연락처\n예시"/>
+            </TableRow>
+            <TableRow
+                android:background="@drawable/tableframe">
+                <TextView
+                    android:id="@+id/lectureplan_detail_info_professorEmail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textAlignment="center"
+                    android:hint="이메일\n예시"/>
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="교과목 개요"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_professorTable"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_explain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="교과목 개요 샬라샬라"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text4"
+            app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text4"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강의 목표"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_explain"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="강의 목표 샬라샬라"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text5"
+            app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text5"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강의 방법"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_goal"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="강의"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lectureplan_detail_info_cbx_2"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text6" />
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="토론/토의"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toEndOf="@id/lectureplan_detail_info_cbx_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text6" />
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="실험/실습/실기"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lectureplan_detail_info_cbx_4"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_1"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="소그룹(팀)/협동학습"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toEndOf="@id/lectureplan_detail_info_cbx_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_1"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="프로젝트"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lectureplan_detail_info_cbx_6"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_3"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="문제중심"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toEndOf="@id/lectureplan_detail_info_cbx_5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_4"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="플립러닝"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lectureplan_detail_info_cbx_8"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_5"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="초청강의"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toEndOf="@id/lectureplan_detail_info_cbx_7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_5"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="개별학습(1:1)"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lectureplan_detail_info_cbx_10"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_7"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_10"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="현장답사/체험"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toEndOf="@id/lectureplan_detail_info_cbx_9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_7"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="온라인"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/lectureplan_detail_info_cbx_12"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_9"/>
+
+        <CheckBox
+            android:id="@+id/lectureplan_detail_info_cbx_12"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:text="액션러닝"
+            android:layout_marginLeft="20dp"
+            app:layout_constraintStart_toEndOf="@id/lectureplan_detail_info_cbx_11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_9"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="평가 방법"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_cbx_12"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_how_evaluate"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="평가 방법 샬라샬라"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text7"
+            app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text7"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="전공 능력"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_how_evaluate"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_major_ability"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="전공 능력 샬라샬라"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text8"
+            app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text8"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="강의규정 또는 안내사항"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_major_ability"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:hint="안내사항 샬라샬라"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text9"
+            app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text9"/>
+
+        <TextView
+            android:id="@+id/lectureplan_detail_info_text10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="교재 및 참고도서 / 추천도서"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_margin="20dp"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_notice"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TableLayout
+            android:id="@+id/lectureplan_detail_info_bookTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/tableframe"
+            app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text10"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <TableRow
+                android:background="@drawable/tableframe">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="서명"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="저자"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="출판년도"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:padding="5dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="출판사"/>
+            </TableRow>
+        </TableLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

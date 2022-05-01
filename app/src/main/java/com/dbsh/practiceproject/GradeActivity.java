@@ -97,6 +97,7 @@ public class GradeActivity extends AppCompatActivity {
                         // 전공 학점 view update
                         for(int i = 0; i < majorList.size(); i++) {
                             TableRow tableRow = new TableRow(GradeActivity.this);
+                            tableRow.setBackground(getDrawable(R.drawable.tableframe));
                             tableRow.setLayoutParams(new TableRow.LayoutParams(
                                     ViewGroup.LayoutParams.WRAP_CONTENT,
                                     ViewGroup.LayoutParams.WRAP_CONTENT
@@ -105,7 +106,6 @@ public class GradeActivity extends AppCompatActivity {
                                 TextView textView = new TextView(GradeActivity.this);
                                 textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
                                 textView.setText(majorList.get(i).get(j));
-                                textView.setBackground(getDrawable(R.drawable.tableframe));
                                 textView.setGravity(Gravity.CENTER);
                                 textView.setTextColor(Color.BLACK);
                                 tableRow.addView(textView);
@@ -115,6 +115,7 @@ public class GradeActivity extends AppCompatActivity {
                         // 교양 학점 view update
                         for(int i = 0; i < liberalList.size(); i++) {
                             TableRow tableRow = new TableRow(GradeActivity.this);
+                            tableRow.setBackground(getDrawable(R.drawable.tableframe));
                             tableRow.setLayoutParams(new TableRow.LayoutParams(
                                     ViewGroup.LayoutParams.WRAP_CONTENT,
                                     ViewGroup.LayoutParams.WRAP_CONTENT
@@ -123,7 +124,6 @@ public class GradeActivity extends AppCompatActivity {
                                 TextView textView = new TextView(GradeActivity.this);
                                 textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
                                 textView.setText(liberalList.get(i).get(j));
-                                textView.setBackground(getDrawable(R.drawable.tableframe));
                                 textView.setGravity(Gravity.CENTER);
                                 textView.setTextColor(Color.BLACK);
                                 tableRow.addView(textView);
@@ -133,6 +133,7 @@ public class GradeActivity extends AppCompatActivity {
                         // 기타 학점 view update
                         for(int i = 0; i < etcList.size(); i++) {
                             TableRow tableRow = new TableRow(GradeActivity.this);
+                            tableRow.setBackground(getDrawable(R.drawable.tableframe));
                             tableRow.setLayoutParams(new TableRow.LayoutParams(
                                     ViewGroup.LayoutParams.WRAP_CONTENT,
                                     ViewGroup.LayoutParams.WRAP_CONTENT
@@ -141,7 +142,6 @@ public class GradeActivity extends AppCompatActivity {
                                 TextView textView = new TextView(GradeActivity.this);
                                 textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
                                 textView.setText(etcList.get(i).get(j));
-                                textView.setBackground(getDrawable(R.drawable.tableframe));
                                 textView.setGravity(Gravity.CENTER);
                                 textView.setTextColor(Color.BLACK);
                                 tableRow.addView(textView);
