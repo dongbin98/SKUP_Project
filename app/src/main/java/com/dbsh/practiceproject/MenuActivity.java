@@ -89,7 +89,8 @@ public class MenuActivity extends AppCompatActivity {
         lectureTimetableBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent timeTableIntent = new Intent(MenuActivity.this, TimetableActivity.class);
+                startActivity(timeTableIntent);
             }
         });
         // 강의 - 강의평가

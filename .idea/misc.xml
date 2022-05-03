@@ -13,6 +13,7 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_switch_on.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_switch_thumb.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_switci_backgroud.xml" value="0.2725" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/timetable_background.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/font/fontstyle.xml" value="0.334375" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/attendance_child_list.xml" value="0.358695652173913" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/attendance_form.xml" value="0.358695652173913" />
@@ -25,6 +26,7 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/lectureplan_detail_week_form.xml" value="0.1875" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/login_form.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/menu_form.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/timetable_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/boxframe.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/tableframe.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
