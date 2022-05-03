@@ -91,7 +91,7 @@ public class GraduateActivity extends AppCompatActivity {
                                 }
                                 textView.setText(tableList.get(i).get(j));
                                 textView.setGravity(Gravity.CENTER);
-                                textView.setTextColor(Color.BLACK);
+                                textView.setTextColor(getColor(R.color.black));
                                 tableRow.addView(textView);
                             }
                             graduateInform.addView(tableRow);

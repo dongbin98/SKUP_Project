@@ -99,7 +99,7 @@ public class LecturePlanDetailWeekFragment extends Fragment {
                                 }
                                 textView.setText(tableList.get(i).get(j));
                                 textView.setGravity(Gravity.CENTER);
-                                textView.setTextColor(Color.BLACK);
+                                textView.setTextColor(rootView.getContext().getColor(R.color.black));
                                 tableRow.addView(textView);
                             }
                             lectureplan_detail_week_table.addView(tableRow);

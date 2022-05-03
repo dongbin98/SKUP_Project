@@ -32,7 +32,8 @@
             android:layout_marginBottom="10dp"
             android:elevation="10dp"
             android:textSize="30dp"
-            android:textColor="#0000FF"
+            android:fontFamily="@font/jalnan"
+            android:textColor="@color/MainColor"
             android:text="이름예시"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>

@@ -103,7 +103,7 @@ public class TimetableActivity extends AppCompatActivity {
                             tableRow.setLayoutParams(params);
                             TextView textView = new TextView(TimetableActivity.this);
                             textView.setText(weekList.get(i));
-                            textView.setTextColor(Color.BLACK);
+                            textView.setTextColor(getColor(R.color.black));
                             textView.setPadding(0,0,0,20);
                             tableRow.addView(textView);
                             timetableWeekTable.addView(tableRow);
@@ -113,7 +113,7 @@ public class TimetableActivity extends AppCompatActivity {
                             tableRow.setLayoutParams(params);
                             TextView textView = new TextView(TimetableActivity.this);
                             textView.setText(todayList.get(i));
-                            textView.setTextColor(Color.BLACK);
+                            textView.setTextColor(getColor(R.color.black));
                             textView.setPadding(0,0,0,20);
                             tableRow.addView(textView);
                             timetableTodayTable.addView(tableRow);

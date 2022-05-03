@@ -107,7 +107,7 @@ public class GradeActivity extends AppCompatActivity {
                                 textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
                                 textView.setText(majorList.get(i).get(j));
                                 textView.setGravity(Gravity.CENTER);
-                                textView.setTextColor(Color.BLACK);
+                                textView.setTextColor(getColor(R.color.black));
                                 tableRow.addView(textView);
                             }
                             majorTable.addView(tableRow);
@@ -125,7 +125,7 @@ public class GradeActivity extends AppCompatActivity {
                                 textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
                                 textView.setText(liberalList.get(i).get(j));
                                 textView.setGravity(Gravity.CENTER);
-                                textView.setTextColor(Color.BLACK);
+                                textView.setTextColor(getColor(R.color.black));
                                 tableRow.addView(textView);
                             }
                             liberalTable.addView(tableRow);
@@ -143,7 +143,7 @@ public class GradeActivity extends AppCompatActivity {
                                 textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
                                 textView.setText(etcList.get(i).get(j));
                                 textView.setGravity(Gravity.CENTER);
-                                textView.setTextColor(Color.BLACK);
+                                textView.setTextColor(getColor(R.color.black));
                                 tableRow.addView(textView);
                             }
                             etcTable.addView(tableRow);
