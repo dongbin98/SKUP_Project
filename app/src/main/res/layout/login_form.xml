@@ -6,11 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
-    <View
-        android:layout_width="350dp"
-        android:layout_height="292dp"
-        android:background="@drawable/boxframe"
-        android:elevation="9dp"
+    <TextView
+        android:id="@+id/skup_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="skup"
+        android:textSize="36dp"
+        android:textColor="#4E7CD7"
+        android:fontFamily="@font/jalnan"
+        app:layout_constraintVertical_bias="0.25"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -18,64 +22,84 @@
 
     <EditText
         android:id="@+id/loginID"
-        android:layout_width="306dp"
-        android:layout_height="52dp"
-        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:paddingLeft="20dp"
-        android:background="@drawable/boxframe"
-        android:elevation="10dp"
+        android:background="@drawable/login_edittext"
         android:textColor="@color/black"
         android:textColorHint="#8b8b8b"
         android:singleLine="true"
-        android:hint="아이디"
-        app:layout_constraintVertical_bias="0.38"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:hint="학번입력"
+        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintTop_toBottomOf="@id/skup_logo"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
     <EditText
         android:id="@+id/loginPW"
-        android:layout_width="306dp"
-        android:layout_height="52dp"
-        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:paddingLeft="20dp"
-        android:background="@drawable/boxframe"
-        android:elevation="10dp"
+        android:background="@drawable/login_edittext"
         android:textColor="@color/black"
         android:textColorHint="#8b8b8b"
         android:singleLine="true"
-        android:hint="비밀번호"
+        android:hint="비밀번호 입력"
         android:password="true"
+        app:layout_constraintVertical_bias="0.03"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginID" />
 
-    <CheckBox
-        android:id="@+id/loginAuto"
-        android:text="자동 로그인"
-        android:textColor="@color/black"
-        android:elevation="10dp"
+    <TextView
+        android:id="@+id/login_text1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="자동 로그인"
+        android:textColor="@color/black"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintVertical_bias="0.03"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPW"/>
 
-
-    <Button
-        android:id="@+id/loginBtn"
-        android:layout_width="306dp"
-        android:layout_height="52dp"
-        android:background="@drawable/boxframe"
-        android:elevation="10dp"
-        android:translationZ="10dp"
-        android:stateListAnimator="@null"
-        android:text="로그인"
-        android:textSize="15dp"
+    <Switch
+        android:id="@+id/loginAuto"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:track="@drawable/login_switch_background"
+        android:thumb="@drawable/login_switch_thumb"
+        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintVertical_bias="0.03"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginAuto" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loginPW"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+   <Button
+       android:id="@+id/loginBtn"
+       android:layout_width="match_parent"
+       android:layout_height="48dp"
+       android:paddingLeft="20dp"
+       android:layout_marginLeft="15dp"
+       android:layout_marginRight="15dp"
+       android:text="로그인"
+       android:textSize="15dp"
+       android:textColor="@color/white"
+       android:background="@drawable/login_button"
+       app:layout_constraintVertical_bias="0.03"
+       app:layout_constraintLeft_toLeftOf="parent"
+       app:layout_constraintRight_toRightOf="parent"
+       app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintTop_toBottomOf="@+id/loginAuto" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

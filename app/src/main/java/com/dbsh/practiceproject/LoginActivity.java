@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
     EditText loginID;
     EditText loginPW;
-    CheckBox loginAuto;
+    Switch loginAuto;
     Button loginBtn;
 
     @Override
@@ -60,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
 
         loginID = (EditText) findViewById(R.id.loginID);
         loginPW = (EditText) findViewById(R.id.loginPW);
-        loginAuto = (CheckBox) findViewById(R.id.loginAuto);
+        loginAuto = (Switch) findViewById(R.id.loginAuto);
 
         if(checked) {
             loginAuto.setChecked(true);
