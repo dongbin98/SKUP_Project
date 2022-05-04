@@ -115,7 +115,9 @@ public class AttendanceActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         data.clear();
-                        getAttendance(token, id, year, term);
+                        attendanceSearchBtn.setClickable(false);
+                        if(getAttendance(token, id, year, term))
+                            attendanceSearchBtn.setClickable(true);
                         // 쓰레드 안에서 UI 변경 시 필요
                         runOnUiThread(new Runnable() {
                             @Override
@@ -131,7 +133,9 @@ public class AttendanceActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                getAttendance(token, id, year, term);
+                attendanceSearchBtn.setClickable(false);
+                if(getAttendance(token, id, year, term))
+                    attendanceSearchBtn.setClickable(true);
                 // 쓰레드 안에서 UI 변경 시 필요
                 runOnUiThread(new Runnable() {
                     @Override
@@ -143,7 +147,7 @@ public class AttendanceActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void getAttendance(String token, String id, String year, String term) {
+    public boolean getAttendance(String token, String id, String year, String term) {
         try {
             // ----------------------------
             // URL 설정 및 접속
@@ -218,13 +222,10 @@ public class AttendanceActivity extends AppCompatActivity {
                                     jsonArray.getJSONObject(i).get("CLSS_NUMB").toString())));
                 }
             }
-        } catch (MalformedURLException exception) {
-            exception.printStackTrace();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        } catch (JSONException exception) {
+        } catch (IOException | JSONException | NullPointerException exception) {
             exception.printStackTrace();
         }
+        return true;
     }
 
     public ArrayList<ArrayList<String>> getDetailAttendance(String token, String id, String year, String term, String CD, String NUMB) {
@@ -303,13 +304,10 @@ public class AttendanceActivity extends AppCompatActivity {
                 }
             }
             return subArray;
-        } catch (MalformedURLException exception) {
+        } catch (IOException | JSONException exception) {
             exception.printStackTrace();
             return null;
-        } catch (IOException exception) {
-            exception.printStackTrace();
-            return null;
-        } catch (JSONException exception) {
+        } catch (NullPointerException exception) {
             exception.printStackTrace();
             return null;
         }
