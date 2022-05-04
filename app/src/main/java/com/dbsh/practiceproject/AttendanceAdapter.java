@@ -56,7 +56,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
                 textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1.0f));
                 textView.setGravity(Gravity.CENTER);
                 textView.setBackground(((AttendanceParentHolder) holder).attendance_table.getContext().getDrawable(R.drawable.tableframe));
-                textView.setTextColor(Color.BLACK);
+                textView.setTextColor(((AttendanceParentHolder) holder).attendance_table.getContext().getColor(R.color.black));
                 tableRow.addView(textView);
             }
             itemController.attendance_table.addView(tableRow);

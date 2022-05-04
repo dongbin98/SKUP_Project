@@ -219,10 +219,11 @@
 
         <TextView
             android:id="@+id/lectureplan_detail_info_explain"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="교과목 개요 샬라샬라"
-            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text4"
             app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text4"/>
 
@@ -239,10 +240,11 @@
 
         <TextView
             android:id="@+id/lectureplan_detail_info_goal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="강의 목표 샬라샬라"
-            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text5"
             app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text5"/>
 
@@ -408,10 +410,11 @@
 
         <TextView
             android:id="@+id/lectureplan_detail_info_how_evaluate"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="평가 방법 샬라샬라"
-            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text7"
             app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text7"/>
 
@@ -431,7 +434,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="전공 능력 샬라샬라"
-            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text8"
             app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text8"/>
 
@@ -448,10 +452,11 @@
 
         <TextView
             android:id="@+id/lectureplan_detail_info_notice"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="안내사항 샬라샬라"
-            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:layout_constraintTop_toBottomOf="@id/lectureplan_detail_info_text9"
             app:layout_constraintLeft_toLeftOf="@id/lectureplan_detail_info_text9"/>
 

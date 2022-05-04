@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="1dp"
+        app:tabBackground="@drawable/lectureplan_tab_background"
+        app:tabIndicatorColor="@color/MainColor"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tabMode="fixed"
