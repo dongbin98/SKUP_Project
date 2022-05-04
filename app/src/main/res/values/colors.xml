@@ -8,6 +8,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="MainColor">#FF4E7CD7</color>
-    <color name="tabColor">#FFDBDCE5</color>
+    <color name="tabSColor">#FFFFFFFF</color>
+    <color name="tabUColor">#FFDBDCE5</color>
     <color name="loginBtnColor">#FFFFFFFF</color>
 </resources>
