@@ -121,7 +121,6 @@ public class TuitionActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-
                 // 가져온 년도, 학기 정보를 갖고 등록금 납부내역 불러오기
                 getTuition(token, id, year, term);
                 // 쓰레드 안에서 UI 변경 시 필요
@@ -160,24 +159,6 @@ public class TuitionActivity extends AppCompatActivity {
 
     public void getInform(String token, String id) {
         try {
-            // ----------------------------
-            // URL 설정 및 접속
-            // ----------------------------
-            URL url = new URL(tuitionURL);
-            connection = (HttpURLConnection) url.openConnection();
-            // Bearer
-            connection.setRequestProperty("Authorization", "Bearer " + token);
-            connection.setConnectTimeout(10000);// 연결 대기 시간 설정
-            connection.setRequestMethod(POST);  // 전송 방식 POST
-            connection.setDoInput(true);        // InputStream으로 서버로부터 응답받음
-            connection.setDoOutput(true);       // OutputStream으로 POST데이터를 넘겨줌
-            // 서버 Response를 JSON 형식의 타입으로 요청
-            connection.setRequestProperty("Accept", "application/json");
-            // 서버에게 Request Body 전달 시 application/json으로 서버에 전달
-            connection.setRequestProperty("content-type", "application/json");
-            // ------------
-            // 서버로 값 요청(전체성적)
-            // ------------
             JSONObject payload = new JSONObject();
             JSONObject parameter = new JSONObject();
 
@@ -195,35 +176,15 @@ public class TuitionActivity extends AppCompatActivity {
             } catch (JSONException exception) {
                 exception.printStackTrace();
             }
-            OutputStream os = connection.getOutputStream();
-            os.write(payload.toString().getBytes(StandardCharsets.UTF_8));
-            os.flush();
-            // 연결 상태 확인
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK)
-                Log.d("Failed", "기본정보 요청 실패!");
-            // --------------
-            // 서버에서 전송받기
-            // --------------
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
-            StringBuilder sb = new StringBuilder();
-            String str;
-            while ((str = reader.readLine()) != null) {
-                sb.append(str);
-            }
-            reader.close();
-            os.close();
 
-            JSONObject jsonResponse = new JSONObject(sb.toString());
+            JSONObject response = Connector.getInstance().getResponse(tuitionURL, token, payload);
+            System.out.println(response.toString());
 
-            String name = jsonResponse.getJSONObject("MAP").get("KOR_NM").toString();
-            String number = jsonResponse.getJSONObject("MAP").get("STU_NO").toString();
-            String major = jsonResponse.getJSONObject("MAP").get("MAJ_NM").toString();
-            String schyear = jsonResponse.getJSONObject("MAP").get("SCHYR").toString();
+            String name = response.getJSONObject("MAP").get("KOR_NM").toString();
+            String number = response.getJSONObject("MAP").get("STU_NO").toString();
+            String major = response.getJSONObject("MAP").get("MAJ_NM").toString();
+            String schyear = response.getJSONObject("MAP").get("SCHYR").toString();
 
-        } catch (MalformedURLException exception) {
-            exception.printStackTrace();
-        } catch (IOException exception) {
-            exception.printStackTrace();
         } catch (JSONException exception) {
             exception.printStackTrace();
         }
@@ -231,24 +192,6 @@ public class TuitionActivity extends AppCompatActivity {
 
     public void getTuition(String token, String id, String year, String term) {
         try {
-            // ----------------------------
-            // URL 설정 및 접속
-            // ----------------------------
-            URL url = new URL(tuitionURL);
-            connection = (HttpURLConnection) url.openConnection();
-            // Bearer
-            connection.setRequestProperty("Authorization", "Bearer " + token);
-            connection.setConnectTimeout(10000);// 연결 대기 시간 설정
-            connection.setRequestMethod(POST);  // 전송 방식 POST
-            connection.setDoInput(true);        // InputStream으로 서버로부터 응답받음
-            connection.setDoOutput(true);       // OutputStream으로 POST데이터를 넘겨줌
-            // 서버 Response를 JSON 형식의 타입으로 요청
-            connection.setRequestProperty("Accept", "application/json");
-            // 서버에게 Request Body 전달 시 application/json으로 서버에 전달
-            connection.setRequestProperty("content-type", "application/json");
-            // ------------
-            // 서버로 값 요청(전체성적)
-            // ------------
             JSONObject payload = new JSONObject();
             JSONObject parameter = new JSONObject();
 
@@ -268,57 +211,36 @@ public class TuitionActivity extends AppCompatActivity {
             } catch (JSONException exception) {
                 exception.printStackTrace();
             }
-            OutputStream os = connection.getOutputStream();
-            os.write(payload.toString().getBytes(StandardCharsets.UTF_8));
-            os.flush();
-            // 연결 상태 확인
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK)
-                Log.d("Failed", "등록금납부내역 요청 실패!");
-            // --------------
-            // 서버에서 전송받기
-            // --------------
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
-            StringBuilder sb = new StringBuilder();
-            String str;
-            while ((str = reader.readLine()) != null) {
-                sb.append(str);
-            }
-            reader.close();
-            os.close();
 
-            JSONObject jsonResponse = new JSONObject(sb.toString());
+            JSONObject response = Connector.getInstance().getResponse(tuitionURL, token, payload);
 
-            String tmp = jsonResponse.getJSONObject("MAP").get("SCH_YEAR").toString();
+            String tmp = response.getJSONObject("MAP").get("SCH_YEAR").toString();
             // Basic Table
             nameStr = ((userClass) getApplication()).getKorName();
-            idStr = jsonResponse.getJSONObject("MAP").get("STU_NO").toString();
-            majorStr = jsonResponse.getJSONObject("MAP").get("SUBJ_STD_NM").toString();
-            schYRStr = jsonResponse.getJSONObject("MAP").get("SCHYR").toString();
-            entDivStr = jsonResponse.getJSONObject("MAP").get("ENT_DIV").toString();
-            entDayStr = jsonResponse.getJSONObject("MAP").get("ENT_DATE").toString();
-            regStatStr = jsonResponse.getJSONObject("MAP").get("SCH_REG_STAT_NM").toString();
-            subPntStr = jsonResponse.getJSONObject("MAP").get("SUBJ_PONT").toString();
-            isuHakgiStr = jsonResponse.getJSONObject("MAP").get("ISU_HAKGI").toString();
-            regSchTermStr = jsonResponse.getJSONObject("MAP").get("REG_SCH_TERM").toString();
+            idStr = response.getJSONObject("MAP").get("STU_NO").toString();
+            majorStr = response.getJSONObject("MAP").get("SUBJ_STD_NM").toString();
+            schYRStr = response.getJSONObject("MAP").get("SCHYR").toString();
+            entDivStr = response.getJSONObject("MAP").get("ENT_DIV").toString();
+            entDayStr = response.getJSONObject("MAP").get("ENT_DATE").toString();
+            regStatStr = response.getJSONObject("MAP").get("SCH_REG_STAT_NM").toString();
+            subPntStr = response.getJSONObject("MAP").get("SUBJ_PONT").toString();
+            isuHakgiStr = response.getJSONObject("MAP").get("ISU_HAKGI").toString();
+            regSchTermStr = response.getJSONObject("MAP").get("REG_SCH_TERM").toString();
             // Tuition Table
-            yeartermStr = jsonResponse.getJSONObject("MAP").get("SCH_YEAR").toString() + "학년 " + jsonResponse.getJSONObject("MAP").get("SCH_TERM").toString() + "학기";
-            entFeeStr = jsonResponse.getJSONObject("MAP").get("ENT_FEE").toString();
-            lesnFeeStr = jsonResponse.getJSONObject("MAP").get("LESN_FEE").toString();
-            coopDegreeStr = jsonResponse.getJSONObject("MAP").get("COOP_DGR_AMT").toString();
-            ussEntFeeStr = jsonResponse.getJSONObject("MAP").get("USS_ENT_FEE").toString();
-            ussLesnFeeStr = jsonResponse.getJSONObject("MAP").get("USS_LESN_FEE").toString();
-            sclsTotStr = jsonResponse.getJSONObject("MAP").get("SCLS_TOT").toString();
-            totAmtStr = jsonResponse.getJSONObject("MAP").get("TOT_AMT").toString();
-            regAmtStr = jsonResponse.getJSONObject("MAP").get("REG_AMT").toString();
-            paidStatStr = jsonResponse.getJSONObject("MAP").get("PAID_STAT_NM").toString();
-            nonPayStr = jsonResponse.getJSONObject("MAP").get("NON_PAY").toString();
-            payDateStr = jsonResponse.getJSONObject("MAP").get("PAY_DATE").toString();
-            tmpAcctStr = jsonResponse.getJSONObject("MAP").get("TEMP_ACCT").toString();
+            yeartermStr = response.getJSONObject("MAP").get("SCH_YEAR").toString() + "학년 " + response.getJSONObject("MAP").get("SCH_TERM").toString() + "학기";
+            entFeeStr = response.getJSONObject("MAP").get("ENT_FEE").toString();
+            lesnFeeStr = response.getJSONObject("MAP").get("LESN_FEE").toString();
+            coopDegreeStr = response.getJSONObject("MAP").get("COOP_DGR_AMT").toString();
+            ussEntFeeStr = response.getJSONObject("MAP").get("USS_ENT_FEE").toString();
+            ussLesnFeeStr = response.getJSONObject("MAP").get("USS_LESN_FEE").toString();
+            sclsTotStr = response.getJSONObject("MAP").get("SCLS_TOT").toString();
+            totAmtStr = response.getJSONObject("MAP").get("TOT_AMT").toString();
+            regAmtStr = response.getJSONObject("MAP").get("REG_AMT").toString();
+            paidStatStr = response.getJSONObject("MAP").get("PAID_STAT_NM").toString();
+            nonPayStr = response.getJSONObject("MAP").get("NON_PAY").toString();
+            payDateStr = response.getJSONObject("MAP").get("PAY_DATE").toString();
+            tmpAcctStr = response.getJSONObject("MAP").get("TEMP_ACCT").toString();
 
-        } catch (MalformedURLException exception) {
-            exception.printStackTrace();
-        } catch (IOException exception) {
-            exception.printStackTrace();
         } catch (JSONException exception) {
             exception.printStackTrace();
         }

@@ -150,24 +150,6 @@ public class AttendanceActivity extends AppCompatActivity {
 
     public boolean getAttendance(String token, String id, String year, String term) {
         try {
-            // ----------------------------
-            // URL 설정 및 접속
-            // ----------------------------
-            URL url = new URL(attendanceURL);
-            connection = (HttpURLConnection) url.openConnection();
-            // Bearer
-            connection.setRequestProperty("Authorization", "Bearer " + token);
-            connection.setConnectTimeout(10000);// 연결 대기 시간 설정
-            connection.setRequestMethod(POST);  // 전송 방식 POST
-            connection.setDoInput(true);        // InputStream으로 서버로부터 응답받음
-            connection.setDoOutput(true);       // OutputStream으로 POST데이터를 넘겨줌
-            // 서버 Response를 JSON 형식의 타입으로 요청
-            connection.setRequestProperty("Accept", "application/json");
-            // 서버에게 Request Body 전달 시 application/json으로 서버에 전달
-            connection.setRequestProperty("content-type", "application/json");
-            // ------------
-            // 서버로 값 요청(이수학점)
-            // ------------
             JSONObject payload = new JSONObject();
             JSONObject parameter = new JSONObject();
 
@@ -187,31 +169,12 @@ public class AttendanceActivity extends AppCompatActivity {
             } catch (JSONException exception) {
                 exception.printStackTrace();
             }
-            OutputStream os = connection.getOutputStream();
-            os.write(payload.toString().getBytes(StandardCharsets.UTF_8));
-            os.flush();
+            JSONObject response = Connector.getInstance().getResponse(attendanceURL, token, payload);
+            System.out.println(response.toString());
 
-            // 연결 상태 확인
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK)
-                Log.d("Failed", "출결조회 요청 실패!");
-            // --------------
-            // 서버에서 전송받기
-            // --------------
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
-            StringBuilder sb = new StringBuilder();
-            String str;
-            while ((str = reader.readLine()) != null) {
-                sb.append(str);
-            }
-            reader.close();
-            os.close();
-
-            JSONObject jsonResponse = new JSONObject(sb.toString());
-            System.out.println(jsonResponse.toString());
-
-            if (jsonResponse.get("RTN_STATUS").toString().equals("S")) {
-                JSONArray jsonArray = jsonResponse.getJSONArray("LIST");
-                int count = Integer.parseInt(jsonResponse.get("COUNT").toString());
+            if (response.get("RTN_STATUS").toString().equals("S")) {
+                JSONArray jsonArray = response.getJSONArray("LIST");
+                int count = Integer.parseInt(response.get("COUNT").toString());
 
 
                 for (int i = 0; i < count; i++) {
@@ -224,7 +187,7 @@ public class AttendanceActivity extends AppCompatActivity {
                                     jsonArray.getJSONObject(i).get("CLSS_NUMB").toString())));
                 }
             }
-        } catch (IOException | JSONException | NullPointerException exception) {
+        } catch (JSONException | NullPointerException exception) {
             exception.printStackTrace();
         }
         return true;
@@ -233,24 +196,6 @@ public class AttendanceActivity extends AppCompatActivity {
     public ArrayList<ArrayList<String>> getDetailAttendance(String token, String id, String year, String term, String CD, String NUMB) {
         ArrayList<ArrayList<String>> subArray = new ArrayList<>();
         try {
-            // ----------------------------
-            // URL 설정 및 접속
-            // ----------------------------
-            URL url = new URL(attendanceDURL);
-            connection = (HttpURLConnection) url.openConnection();
-            // Bearer
-            connection.setRequestProperty("Authorization", "Bearer " + token);
-            connection.setConnectTimeout(10000);// 연결 대기 시간 설정
-            connection.setRequestMethod(POST);  // 전송 방식 POST
-            connection.setDoInput(true);        // InputStream으로 서버로부터 응답받음
-            connection.setDoOutput(true);       // OutputStream으로 POST데이터를 넘겨줌
-            // 서버 Response를 JSON 형식의 타입으로 요청
-            connection.setRequestProperty("Accept", "application/json");
-            // 서버에게 Request Body 전달 시 application/json으로 서버에 전달
-            connection.setRequestProperty("content-type", "application/json");
-            // ------------
-            // 서버로 값 요청(이수학점)
-            // ------------
             JSONObject payload = new JSONObject();
             JSONObject parameter = new JSONObject();
 
@@ -271,31 +216,12 @@ public class AttendanceActivity extends AppCompatActivity {
             } catch (JSONException exception) {
                 exception.printStackTrace();
             }
-            OutputStream os = connection.getOutputStream();
-            os.write(payload.toString().getBytes(StandardCharsets.UTF_8));
-            os.flush();
+            JSONObject response = Connector.getInstance().getResponse(attendanceDURL, token, payload);
+            System.out.println(response.toString());
 
-            // 연결 상태 확인
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK)
-                Log.d("Failed", "출결세부조회 요청 실패!");
-            // --------------
-            // 서버에서 전송받기
-            // --------------
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
-            StringBuilder sb = new StringBuilder();
-            String str;
-            while ((str = reader.readLine()) != null) {
-                sb.append(str);
-            }
-            reader.close();
-            os.close();
-
-            JSONObject jsonResponse = new JSONObject(sb.toString());
-            System.out.println(jsonResponse.toString());
-
-            if (jsonResponse.get("RTN_STATUS").toString().equals("S")) {
-                JSONArray jsonArray = jsonResponse.getJSONArray("LIST");
-                int count = Integer.parseInt(jsonResponse.get("COUNT").toString());
+            if (response.get("RTN_STATUS").toString().equals("S")) {
+                JSONArray jsonArray = response.getJSONArray("LIST");
+                int count = Integer.parseInt(response.get("COUNT").toString());
 
                 for (int i = 0; i < count; i++) {
                     ArrayList<String> tmp = new ArrayList<>();
@@ -306,10 +232,7 @@ public class AttendanceActivity extends AppCompatActivity {
                 }
             }
             return subArray;
-        } catch (IOException | JSONException exception) {
-            exception.printStackTrace();
-            return null;
-        } catch (NullPointerException exception) {
+        } catch (JSONException | NullPointerException exception) {
             exception.printStackTrace();
             return null;
         }

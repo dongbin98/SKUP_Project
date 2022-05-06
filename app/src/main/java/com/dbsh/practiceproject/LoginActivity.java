@@ -140,12 +140,13 @@ public class LoginActivity extends AppCompatActivity {
             }
             reader.close();
             os.close();
+            connection.disconnect();
 
-            JSONObject jsonResponse = new JSONObject(sb.toString());
+            JSONObject response = new JSONObject(sb.toString());
             // 로그인 성공 실패 유무 출력
             // 쓰레드 단에서는 핸들러로 처리해줘야 Toast 메시지 출력가능
             Handler handler = new Handler(Looper.getMainLooper());
-            if(jsonResponse.get("RTN_STATUS").toString().equals("S")) {
+            if(response.get("RTN_STATUS").toString().equals("S")) {
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -173,7 +174,7 @@ public class LoginActivity extends AppCompatActivity {
                 autoLoginEdit.commit();
             }
             // 유저정보 받아오기
-            JSONObject UserInfo = jsonResponse.getJSONObject("USER_INFO");
+            JSONObject UserInfo = response.getJSONObject("USER_INFO");
             ((userClass) getApplication()).setId(UserInfo.get("ID").toString());
             ((userClass) getApplication()).setKorName(UserInfo.get("KOR_NAME").toString());
             ((userClass) getApplication()).setPhoneNumber(UserInfo.get("PHONE_MOBILE").toString());
@@ -185,8 +186,8 @@ public class LoginActivity extends AppCompatActivity {
                     UserInfo.get("SCH_TERM").toString(),
                     UserInfo.get("SCHYR").toString(),
                     UserInfo.get("SCH_REG_STAT_NM").toString());
-            ((userClass) getApplication()).setToken(jsonResponse.get("access_token").toString());
-            JSONArray YearList = jsonResponse.getJSONArray("YEAR_LIST");
+            ((userClass) getApplication()).setToken(response.get("access_token").toString());
+            JSONArray YearList = response.getJSONArray("YEAR_LIST");
             if (!((userClass) getApplication()).getYearlist().isEmpty()) {
                 ((userClass) getApplication()).clearYearlist();
             }
@@ -196,11 +197,7 @@ public class LoginActivity extends AppCompatActivity {
             // 메뉴 페이지로 넘어가기
             Intent intent = new Intent(this, MenuActivity.class);
             startActivity(intent);
-        } catch (MalformedURLException exception) {
-            exception.printStackTrace();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        } catch (JSONException exception) {
+        } catch (IOException | JSONException exception) {
             exception.printStackTrace();
         }
     }

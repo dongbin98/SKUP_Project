@@ -196,24 +196,6 @@ public class GradeActivity extends AppCompatActivity {
     // 총 이수학점 로드
     public void getCredit(String token, String id) {
         try {
-            // ----------------------------
-            // URL 설정 및 접속
-            // ----------------------------
-            URL url = new URL(gradeURL);
-            connection = (HttpURLConnection) url.openConnection();
-            // Bearer
-            connection.setRequestProperty("Authorization", "Bearer " + token);
-            connection.setConnectTimeout(10000);// 연결 대기 시간 설정
-            connection.setRequestMethod(POST);  // 전송 방식 POST
-            connection.setDoInput(true);        // InputStream으로 서버로부터 응답받음
-            connection.setDoOutput(true);       // OutputStream으로 POST데이터를 넘겨줌
-            // 서버 Response를 JSON 형식의 타입으로 요청
-            connection.setRequestProperty("Accept", "application/json");
-            // 서버에게 Request Body 전달 시 application/json으로 서버에 전달
-            connection.setRequestProperty("content-type", "application/json");
-            // ------------
-            // 서버로 값 요청(이수학점)
-            // ------------
             JSONObject payload = new JSONObject();
             JSONObject parameter = new JSONObject();
             parameter.put("ID", id);
@@ -230,28 +212,11 @@ public class GradeActivity extends AppCompatActivity {
             } catch (JSONException exception) {
                 exception.printStackTrace();
             }
-            OutputStream os = connection.getOutputStream();
-            os.write(payload.toString().getBytes(StandardCharsets.UTF_8));
-            os.flush();
+            JSONObject response = Connector.getInstance().getResponse(gradeURL, token, payload);
+            System.out.println(response.toString());
 
-            // 연결 상태 확인
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK)
-                Log.d("Failed", "이수학점 요청 실패!");
-            // --------------
-            // 서버에서 전송받기
-            // --------------
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
-            StringBuilder sb = new StringBuilder();
-            String str;
-            while ((str = reader.readLine()) != null) {
-                sb.append(str);
-            }
-            reader.close();
-            os.close();
-
-            JSONObject jsonResponse = new JSONObject(sb.toString());
-            if(jsonResponse.get("RTN_STATUS").toString().equals("S")) {
-                JSONArray jsonArray = jsonResponse.getJSONArray("LIST");
+            if(response.get("RTN_STATUS").toString().equals("S")) {
+                JSONArray jsonArray = response.getJSONArray("LIST");
 
                 // 총 신청학점
                 applyLIST = jsonArray.getJSONObject(0).get("PNT_TOT").toString();
@@ -355,10 +320,6 @@ public class GradeActivity extends AppCompatActivity {
                 System.out.println(etcList);
             }
 
-        } catch (MalformedURLException exception) {
-            exception.printStackTrace();
-        } catch (IOException exception) {
-            exception.printStackTrace();
         } catch (JSONException exception) {
             exception.printStackTrace();
         }
@@ -366,24 +327,6 @@ public class GradeActivity extends AppCompatActivity {
     // 학기 별 성적 로드
     public void getEachGrade(String token, String id) {
         try {
-            // ----------------------------
-            // URL 설정 및 접속
-            // ----------------------------
-            URL url = new URL(gradeURL);
-            connection = (HttpURLConnection) url.openConnection();
-            // Bearer
-            connection.setRequestProperty("Authorization", "Bearer " + token);
-            connection.setConnectTimeout(10000);// 연결 대기 시간 설정
-            connection.setRequestMethod(POST);  // 전송 방식 POST
-            connection.setDoInput(true);        // InputStream으로 서버로부터 응답받음
-            connection.setDoOutput(true);       // OutputStream으로 POST데이터를 넘겨줌
-            // 서버 Response를 JSON 형식의 타입으로 요청
-            connection.setRequestProperty("Accept", "application/json");
-            // 서버에게 Request Body 전달 시 application/json으로 서버에 전달
-            connection.setRequestProperty("content-type", "application/json");
-            // ------------
-            // 서버로 값 요청(전체성적)
-            // ------------
             JSONObject payload = new JSONObject();
             JSONObject parameter = new JSONObject();
 
@@ -401,30 +344,14 @@ public class GradeActivity extends AppCompatActivity {
             } catch (JSONException exception) {
                 exception.printStackTrace();
             }
-            OutputStream os = connection.getOutputStream();
-            os.write(payload.toString().getBytes(StandardCharsets.UTF_8));
-            os.flush();
-            // 연결 상태 확인
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK)
-                Log.d("Failed", "학기 별 성적 요청 실패!");
-            // --------------
-            // 서버에서 전송받기
-            // --------------
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
-            StringBuilder sb = new StringBuilder();
-            String str;
-            while ((str = reader.readLine()) != null) {
-                sb.append(str);
-            }
-            reader.close();
-            os.close();
+            JSONObject response = Connector.getInstance().getResponse(gradeURL, token, payload);
+            System.out.println(response.toString());
 
-            JSONObject jsonResponse = new JSONObject(sb.toString());
-            if (jsonResponse.get("RTN_STATUS").toString().equals("S")) {
-                JSONArray jsonArray = jsonResponse.getJSONArray("LIST");
+            if (response.get("RTN_STATUS").toString().equals("S")) {
+                JSONArray jsonArray = response.getJSONArray("LIST");
 
                 // 이수한 학기 수
-                int count = Integer.parseInt(jsonResponse.get("COUNT").toString());
+                int count = Integer.parseInt(response.get("COUNT").toString());
 
                 for (int i = 0; i < count; i++) {
                     String year = jsonArray.getJSONObject(i).get("SCH_YEAR").toString();
@@ -442,10 +369,6 @@ public class GradeActivity extends AppCompatActivity {
                 }
             }
 
-        } catch (MalformedURLException exception) {
-            exception.printStackTrace();
-        } catch (IOException exception) {
-            exception.printStackTrace();
         } catch (JSONException exception) {
             exception.printStackTrace();
         }
@@ -453,24 +376,6 @@ public class GradeActivity extends AppCompatActivity {
     // 학기 별 과목 당 성적 로드
     public void getEachSubjectGrade(String year, String term, String token, String id, int Position) {
         try {
-            // ----------------------------
-            // URL 설정 및 접속
-            // ----------------------------
-            URL url = new URL(gradeURL);
-            connection = (HttpURLConnection) url.openConnection();
-            // Bearer
-            connection.setRequestProperty("Authorization", "Bearer " + token);
-            connection.setConnectTimeout(10000);// 연결 대기 시간 설정
-            connection.setRequestMethod(POST);  // 전송 방식 POST
-            connection.setDoInput(true);        // InputStream으로 서버로부터 응답받음
-            connection.setDoOutput(true);       // OutputStream으로 POST데이터를 넘겨줌
-            // 서버 Response를 JSON 형식의 타입으로 요청
-            connection.setRequestProperty("Accept", "application/json");
-            // 서버에게 Request Body 전달 시 application/json으로 서버에 전달
-            connection.setRequestProperty("content-type", "application/json");
-            // ------------
-            // 서버로 값 요청(전체성적)
-            // ------------
             JSONObject payload = new JSONObject();
             JSONObject parameter = new JSONObject();
 
@@ -490,30 +395,13 @@ public class GradeActivity extends AppCompatActivity {
             } catch (JSONException exception) {
                 exception.printStackTrace();
             }
-            OutputStream os = connection.getOutputStream();
-            os.write(payload.toString().getBytes(StandardCharsets.UTF_8));
-            os.flush();
-            // 연결 상태 확인
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK)
-                Log.d("Failed", "학기 별 과목 당 성적 요청 실패!");
-            // --------------
-            // 서버에서 전송받기
-            // --------------
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
-            StringBuilder sb = new StringBuilder();
-            String str;
-            while ((str = reader.readLine()) != null) {
-                sb.append(str);
-            }
-            reader.close();
-            os.close();
+            JSONObject response = Connector.getInstance().getResponse(gradeURL, token, payload);
 
-            JSONObject jsonResponse = new JSONObject(sb.toString());
-            if(jsonResponse.get("RTN_STATUS").toString().equals("S")) {
-                JSONArray jsonArray = jsonResponse.getJSONArray("LIST");
+            if(response.get("RTN_STATUS").toString().equals("S")) {
+                JSONArray jsonArray = response.getJSONArray("LIST");
 
                 // 이수한 학기 수
-                int count = Integer.parseInt(jsonResponse.get("COUNT").toString());
+                int count = Integer.parseInt(response.get("COUNT").toString());
 
                 ArrayList<ScoreChild> tmp = new ArrayList<ScoreChild>();
 
@@ -531,10 +419,6 @@ public class GradeActivity extends AppCompatActivity {
                 }
                 childList.add(Position, tmp);
             }
-        } catch (MalformedURLException exception) {
-            exception.printStackTrace();
-        } catch (IOException exception) {
-            exception.printStackTrace();
         } catch (JSONException exception) {
             exception.printStackTrace();
         }

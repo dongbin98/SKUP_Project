@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -43,8 +42,10 @@ public class Connector {
             os.flush();
 
             // 연결 상태 확인
-            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK)
+            if (connection.getResponseCode() != HttpURLConnection.HTTP_OK) {
                 Log.d("Failed", "request 실패!");
+                return null;
+            }
             // --------------
             // 서버에서 전송받기
             // --------------
@@ -56,6 +57,7 @@ public class Connector {
             }
             reader.close();
             os.close();
+            connection.disconnect();
 
             JSONObject response = new JSONObject(sb.toString());
             return response;
