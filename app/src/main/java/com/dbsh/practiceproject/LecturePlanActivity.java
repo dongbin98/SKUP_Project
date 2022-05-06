@@ -171,7 +171,9 @@ public class LecturePlanActivity extends AppCompatActivity {
                         professorNameList.clear();
                         classNumberList.clear();
                         professorIDList.clear();
-                        getLecturePlan(token, id, year, term);
+                        lecturePlanSearchBtn.setClickable(false);
+                        if(getLecturePlan(token, id, year, term))
+                            lecturePlanSearchBtn.setClickable(true);
                         // 쓰레드 안에서 UI 변경 시 필요
                         runOnUiThread(new Runnable() {
                             @Override
@@ -203,7 +205,9 @@ public class LecturePlanActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                getLecturePlan(token, id, year, term);
+                lecturePlanSearchBtn.setClickable(false);
+                if(getLecturePlan(token, id, year, term))
+                    lecturePlanSearchBtn.setClickable(true);
                 // 쓰레드 안에서 UI 변경 시 필요
                 runOnUiThread(new Runnable() {
                     @Override
@@ -215,7 +219,7 @@ public class LecturePlanActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void getLecturePlan(String token, String id, String year, String term) {
+    public boolean getLecturePlan(String token, String id, String year, String term) {
         try {
             // ----------------------------
             // URL 설정 및 접속
@@ -300,6 +304,7 @@ public class LecturePlanActivity extends AppCompatActivity {
         } catch (JSONException exception) {
             exception.printStackTrace();
         }
+        return true;
     }
     public void searchFilter(String searchText) {
 

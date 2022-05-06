@@ -146,7 +146,9 @@ public class MajorpotenActivity extends AppCompatActivity {
                         majorpotenOnlineList.clear();
                         majorpotenEvntDateList.clear();
                         majorpotenTimeList.clear();
-                        getMajorpotenInfo(token, id, year, term);
+                        majorpotenSearchBtn.setClickable(false);
+                        if(getMajorpotenInfo(token, id, year, term))
+                            majorpotenSearchBtn.setClickable(true);
                         // 쓰레드 안에서 UI 변경 시 필요
                         runOnUiThread(new Runnable() {
                             @Override
@@ -162,7 +164,9 @@ public class MajorpotenActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                getMajorpotenInfo(token, id, year, term);
+                majorpotenSearchBtn.setClickable(false);
+                if(getMajorpotenInfo(token, id, year, term))
+                    majorpotenSearchBtn.setClickable(true);
                 // 쓰레드 안에서 UI 변경 시 필요
                 runOnUiThread(new Runnable() {
                     @Override
@@ -174,7 +178,7 @@ public class MajorpotenActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void getMajorpotenInfo(String token, String id, String year, String term) {
+    public boolean getMajorpotenInfo(String token, String id, String year, String term) {
         try {
             // ----------------------------
             // URL 설정 및 접속
@@ -262,5 +266,6 @@ public class MajorpotenActivity extends AppCompatActivity {
         } catch (JSONException exception) {
             exception.printStackTrace();
         }
+        return true;
     }
 }

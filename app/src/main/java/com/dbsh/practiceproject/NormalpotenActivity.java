@@ -160,7 +160,9 @@ public class NormalpotenActivity extends AppCompatActivity {
                         normalpotenBigoList.clear();
                         normalpotenEvntDateList.clear();
                         normalpotenTimeList.clear();
-                        getNormalpotenInfo(token, id, year, term);
+                        normalpotenSearchBtn.setClickable(false);
+                        if(getNormalpotenInfo(token, id, year, term))
+                            normalpotenSearchBtn.setClickable(true);
                         // 쓰레드 안에서 UI 변경 시 필요
                         runOnUiThread(new Runnable() {
                             @Override
@@ -176,7 +178,9 @@ public class NormalpotenActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                getNormalpotenInfo(token, id, year, term);
+                normalpotenSearchBtn.setClickable(false);
+                if(getNormalpotenInfo(token, id, year, term))
+                    normalpotenSearchBtn.setClickable(true);
                 // 쓰레드 안에서 UI 변경 시 필요
                 runOnUiThread(new Runnable() {
                     @Override
@@ -188,7 +192,7 @@ public class NormalpotenActivity extends AppCompatActivity {
         }).start();
     }
 
-    public void getNormalpotenInfo(String token, String id, String year, String term) {
+    public boolean getNormalpotenInfo(String token, String id, String year, String term) {
         try {
             // ----------------------------
             // URL 설정 및 접속
@@ -280,5 +284,6 @@ public class NormalpotenActivity extends AppCompatActivity {
         } catch (JSONException exception) {
             exception.printStackTrace();
         }
+        return true;
     }
 }

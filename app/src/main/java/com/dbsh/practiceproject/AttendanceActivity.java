@@ -114,7 +114,7 @@ public class AttendanceActivity extends AppCompatActivity {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        data.clear();
+                        adapter.dataClear();
                         attendanceSearchBtn.setClickable(false);
                         if(getAttendance(token, id, year, term))
                             attendanceSearchBtn.setClickable(true);
@@ -133,6 +133,7 @@ public class AttendanceActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                adapter.dataClear();
                 attendanceSearchBtn.setClickable(false);
                 if(getAttendance(token, id, year, term))
                     attendanceSearchBtn.setClickable(true);
@@ -211,6 +212,7 @@ public class AttendanceActivity extends AppCompatActivity {
             if (jsonResponse.get("RTN_STATUS").toString().equals("S")) {
                 JSONArray jsonArray = jsonResponse.getJSONArray("LIST");
                 int count = Integer.parseInt(jsonResponse.get("COUNT").toString());
+
 
                 for (int i = 0; i < count; i++) {
                     data.add(new AttendanceAdapter.AttendanceItem(AttendanceAdapter.HEADER,

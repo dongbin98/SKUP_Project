@@ -19,9 +19,9 @@ import java.util.List;
 
 public class AttendanceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     public static final int HEADER = 0;
-    public static final int CHILD = 1;
     private List<AttendanceItem> data;
 
+    public void dataClear() {data.clear();}
     public AttendanceAdapter(List<AttendanceItem> data) {
         this.data = data;
     }
@@ -44,6 +44,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         itemController.subjectName.setText(item.text);
         itemController.professorName.setText(item.text2);
         itemController.subjectCD.setText(item.text3);
+        itemController.attendance_table.removeAllViews();   // 재 조회시 이전꺼 삭제
         for(int i = 0; i < item.subtext.size(); i++) {
             TableRow tableRow = new TableRow(((AttendanceParentHolder) holder).attendance_table.getContext());
             tableRow.setLayoutParams(new TableRow.LayoutParams(
@@ -110,6 +111,9 @@ public class AttendanceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
             this.text2 = text2;
             this.text3 = text3;
             this.subtext = subtext;
+        }
+        public void subClear() {
+            subtext.clear();
         }
     }
 }
