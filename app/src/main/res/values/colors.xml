@@ -11,4 +11,6 @@
     <color name="tabSColor">#FFFFFFFF</color>
     <color name="tabUColor">#FFDBDCE5</color>
     <color name="loginBtnColor">#FFFFFFFF</color>
+    <color name="cardgridentStartColor">#FF4E7CD7</color>
+    <color name="cardgridentEndColor">#FF78B4DF</color>
 </resources>

@@ -16,7 +16,7 @@
             android:id="@+id/infoView"
             android:layout_width="350dp"
             android:layout_height="150dp"
-            android:background="@drawable/boxframe"
+            android:background="@drawable/menu_card"
             android:elevation="9dp"
             android:layout_marginTop="30dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -33,7 +33,7 @@
             android:elevation="10dp"
             android:textSize="30dp"
             android:fontFamily="@font/jalnan"
-            android:textColor="@color/MainColor"
+            android:textColor="@color/loginBtnColor"
             android:text="이름예시"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -45,7 +45,7 @@
             android:layout_marginTop="10dp"
             android:elevation="10dp"
             android:textSize="15dp"
-            android:textColor="@color/black"
+            android:textColor="@color/loginBtnColor"
             android:text="학적정보예시"
             app:layout_constraintTop_toBottomOf="@+id/korName"
             app:layout_constraintLeft_toLeftOf="@id/korName"/>
@@ -57,7 +57,7 @@
             android:layout_marginTop="10dp"
             android:elevation="10dp"
             android:textSize="15dp"
-            android:textColor="@color/black"
+            android:textColor="@color/loginBtnColor"
             android:text="웹메일예시"
             app:layout_constraintTop_toBottomOf="@+id/college"
             app:layout_constraintLeft_toLeftOf="@id/korName"/>
