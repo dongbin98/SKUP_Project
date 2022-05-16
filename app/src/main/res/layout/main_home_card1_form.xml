@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="200dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/menu_card">
+
+        <ImageView
+            android:id="@+id/univ_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/univ_logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/major_character"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/sku_enzi"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/univ_logo" />
+
+        <TextView
+            android:id="@+id/college_major"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="60dp"
+            android:fontFamily="@font/default_font"
+            android:text="이공대학\n컴퓨터공학과"
+            android:textColor="@color/BtnColor"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/major_character"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/stu_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/default_font"
+            android:text="2017305045 염동빈"
+            android:textColor="@color/BtnColor"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toRightOf="@id/major_character"
+            app:layout_constraintTop_toBottomOf="@id/college_major" />
+
+        <ImageView
+            android:id="@+id/mentor_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/mentor"
+            app:layout_constraintLeft_toRightOf="@id/major_character"
+            app:layout_constraintTop_toBottomOf="@id/stu_info" />
+
+        <ImageView
+            android:id="@+id/mail_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="6dp"
+            android:src="@drawable/mail"
+            app:layout_constraintLeft_toRightOf="@id/major_character"
+            app:layout_constraintTop_toBottomOf="@id/mentor_img" />
+
+        <TextView
+            android:id="@+id/mentor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:fontFamily="@font/default_font"
+            android:text="박태룡 멘토"
+            android:textColor="@color/BtnColor"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/mentor_img"
+            app:layout_constraintLeft_toRightOf="@id/mentor_img"
+            app:layout_constraintTop_toTopOf="@id/mentor_img" />
+
+        <TextView
+            android:id="@+id/mail_addr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:fontFamily="@font/default_font"
+            android:text="yeomdongbin@skuniv.ac.kr"
+            android:textColor="@color/BtnColor"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="@id/mail_img"
+            app:layout_constraintLeft_toRightOf="@id/mail_img"
+            app:layout_constraintTop_toTopOf="@id/mail_img" />
+
+        <ImageView
+            android:id="@+id/haknyun_img"
+            android:layout_width="44dp"
+            android:layout_height="18dp"
+            android:src="@drawable/boxframe"
+            android:layout_marginRight="11dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/haknyun_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/default_font"
+            android:text="4학년"
+            android:textColor="@color/BtnColor"
+            android:textSize="10dp"
+            app:layout_constraintLeft_toLeftOf="@id/haknyun_img"
+            app:layout_constraintRight_toRightOf="@id/haknyun_img"
+            app:layout_constraintTop_toTopOf="@id/haknyun_img"
+            app:layout_constraintBottom_toBottomOf="@id/haknyun_img"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

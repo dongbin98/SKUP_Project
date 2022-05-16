@@ -7,5 +7,5 @@
         android:type="linear"
         android:startColor="@color/cardgridentStartColor"
         android:endColor="@color/cardgridentEndColor"/>
-    <corners android:radius="30dp"/>
+    <corners android:radius="15dp"/>
 </shape>

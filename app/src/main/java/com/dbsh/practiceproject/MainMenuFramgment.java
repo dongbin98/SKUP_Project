@@ -98,7 +98,8 @@ public class MainMenuFramgment extends Fragment {
         main_menu_poten_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), TempPotenSelectActivity.class);
+                startActivity(intent);
             }
         });
 

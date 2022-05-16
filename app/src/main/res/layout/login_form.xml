@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:track="@drawable/login_switch_background"
         android:thumb="@drawable/login_switch_thumb"
-        app:layout_constraintHorizontal_bias="0.7"
+        app:layout_constraintHorizontal_bias="0.65"
         app:layout_constraintVertical_bias="0.03"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

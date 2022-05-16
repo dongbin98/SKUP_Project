@@ -28,6 +28,7 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/setting_btn.xml" value="0.27" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/tableframe.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/timetable_background.xml" value="0.2725" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/univ_logo.xml" value="0.27" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/font/default_font.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/font/fontstyle.xml" value="0.334375" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/font/logo_font.xml" value="0.21927083333333333" />
@@ -45,6 +46,7 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/lectureplan_list.xml" value="0.1890625" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/login_form.xml" value="0.33" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_form.xml" value="0.1875" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card1_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_form.xml" value="0.1875" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_menu_form.xml" value="0.25" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_setting_form.xml" value="0.36614583333333334" />
@@ -55,6 +57,7 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/normalpoten_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/normalpoten_list.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/qr_form.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/temp_poten_select_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/timetable_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/tuition_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/menu/main_navigation.xml" value="0.1875" />

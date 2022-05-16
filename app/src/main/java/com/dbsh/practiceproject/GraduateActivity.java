@@ -140,7 +140,7 @@ public class GraduateActivity extends AppCompatActivity {
                 System.out.println("tableList L :" + tableList);
             }
 
-        } catch (JSONException exception) {
+        } catch (JSONException | NullPointerException exception) {
             exception.printStackTrace();
         }
     }

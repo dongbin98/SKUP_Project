@@ -13,7 +13,7 @@
         <ImageView
             android:id="@+id/main_info_view"
             android:layout_width="320dp"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
             android:src="@drawable/menu_card"
             android:elevation="9dp"
             android:layout_marginTop="30dp"
