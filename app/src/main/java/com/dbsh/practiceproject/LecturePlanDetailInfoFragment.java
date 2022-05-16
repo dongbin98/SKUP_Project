@@ -261,7 +261,6 @@ public class LecturePlanDetailInfoFragment extends Fragment {
                 exception.printStackTrace();
             }
             JSONObject response = Connector.getInstance().getResponse(detailInfoURL, token, payload);
-
             if(response.get("RTN_STATUS").toString().equals("S")) {
                 JSONObject MAP = response.getJSONObject("MAP");
 

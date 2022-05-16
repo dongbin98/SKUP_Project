@@ -59,8 +59,6 @@ public class LecturePlanDetailActivity extends AppCompatActivity {
 
         infoFragment = new LecturePlanDetailInfoFragment();
         infoFragment.setArguments(bundle);
-        weekFragment = new LecturePlanDetailWeekFragment();
-        weekFragment.setArguments(bundle);
 
         getSupportFragmentManager().beginTransaction().add(R.id.container, infoFragment).commit();
         tabs = findViewById(R.id.lectureplan_detail_tabs);
@@ -71,12 +69,27 @@ public class LecturePlanDetailActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
-                Fragment selected = null;
-                if (position == 0)
-                    selected = infoFragment;
-                else if (position == 1)
-                    selected = weekFragment;
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, selected).commit();
+                if (position == 0) {
+                    if(infoFragment != null) {
+                        getSupportFragmentManager().beginTransaction().show(infoFragment).commit();
+                    }
+                    if (weekFragment != null) {
+                        getSupportFragmentManager().beginTransaction().hide(weekFragment).commit();
+                    }
+                }
+                else {
+                    if(weekFragment == null) {
+                        weekFragment = new LecturePlanDetailWeekFragment();
+                        weekFragment.setArguments(bundle);
+                        getSupportFragmentManager().beginTransaction().add(R.id.container, weekFragment).commit();
+                    }
+                    if (weekFragment != null) {
+                        getSupportFragmentManager().beginTransaction().show(weekFragment).commit();
+                    }
+                    if(infoFragment != null) {
+                        getSupportFragmentManager().beginTransaction().hide(infoFragment).commit();
+                    }
+                }
             }
 
             @Override

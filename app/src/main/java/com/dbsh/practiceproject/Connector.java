@@ -15,7 +15,7 @@ import java.nio.charset.StandardCharsets;
 
 public class Connector {
     private HttpURLConnection connection;
-    private Connector() {}
+    public Connector() {}
     public static Connector getInstance() {
         return LazyHolder.INSTANCE;
     }
