@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuActivity">
+    tools:context=".MenuActivity"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <ScrollView
         android:id="@+id/scrollview"
@@ -41,7 +43,7 @@
                 android:elevation="10dp"
                 android:textSize="30dp"
                 android:fontFamily="@font/jalnan"
-                android:textColor="@color/loginBtnColor"
+                android:textColor="@color/BtnColor"
                 android:text="이름예시"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"/>
@@ -53,7 +55,7 @@
                 android:layout_marginTop="10dp"
                 android:elevation="10dp"
                 android:textSize="15dp"
-                android:textColor="@color/loginBtnColor"
+                android:textColor="@color/BtnColor"
                 android:text="학적정보예시"
                 app:layout_constraintTop_toBottomOf="@+id/korName"
                 app:layout_constraintLeft_toLeftOf="@id/korName"/>
@@ -65,7 +67,7 @@
                 android:layout_marginTop="10dp"
                 android:elevation="10dp"
                 android:textSize="15dp"
-                android:textColor="@color/loginBtnColor"
+                android:textColor="@color/BtnColor"
                 android:text="웹메일예시"
                 app:layout_constraintTop_toBottomOf="@+id/college"
                 app:layout_constraintLeft_toLeftOf="@id/korName"/>

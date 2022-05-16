@@ -10,7 +10,7 @@
     <color name="MainColor">#FF4E7CD7</color>
     <color name="tabSColor">#FF212124</color>
     <color name="tabUColor">#FF4D506A</color>
-    <color name="loginBtnColor">#FFFFFFFF</color>
+    <color name="BtnColor">#FFFFFFFF</color>
     <color name="cardgridentStartColor">#FF526A98</color>
     <color name="cardgridentEndColor">#FF2B3343</color>
 </resources>

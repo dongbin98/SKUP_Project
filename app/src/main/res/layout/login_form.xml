@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".LoginActivity"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <TextView
         android:id="@+id/skup_logo"
@@ -28,6 +30,7 @@
         android:layout_marginRight="15dp"
         android:paddingLeft="20dp"
         android:background="@drawable/login_edittext"
+        android:fontFamily="@font/default_font"
         android:textColor="@color/black"
         android:textColorHint="#8b8b8b"
         android:singleLine="true"
@@ -46,6 +49,7 @@
         android:layout_marginRight="15dp"
         android:paddingLeft="20dp"
         android:background="@drawable/login_edittext"
+        android:fontFamily="@font/default_font"
         android:textColor="@color/black"
         android:textColorHint="#8b8b8b"
         android:singleLine="true"
@@ -93,9 +97,11 @@
        android:layout_marginRight="15dp"
        android:text="로그인"
        android:textSize="15dp"
+       android:fontFamily="@font/default_font"
+       android:textStyle="bold"
        android:textAlignment="center"
-       android:textColor="@color/loginBtnColor"
-       android:background="@drawable/login_button"
+       android:textColor="@color/BtnColor"
+       android:background="@drawable/button_background"
        app:layout_constraintVertical_bias="0.03"
        app:layout_constraintLeft_toLeftOf="parent"
        app:layout_constraintRight_toRightOf="parent"

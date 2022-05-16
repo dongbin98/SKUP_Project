@@ -2,7 +2,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -10,7 +12,7 @@
 
         <ImageView
             android:id="@+id/main_info_view"
-            android:layout_width="350dp"
+            android:layout_width="320dp"
             android:layout_height="150dp"
             android:src="@drawable/menu_card"
             android:elevation="9dp"
@@ -29,7 +31,7 @@
             android:elevation="10dp"
             android:textSize="30dp"
             android:fontFamily="@font/jalnan"
-            android:textColor="@color/loginBtnColor"
+            android:textColor="@color/BtnColor"
             android:text="이름예시"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -41,7 +43,7 @@
             android:layout_marginTop="10dp"
             android:elevation="10dp"
             android:textSize="15dp"
-            android:textColor="@color/loginBtnColor"
+            android:textColor="@color/BtnColor"
             android:text="학적정보예시"
             app:layout_constraintTop_toBottomOf="@+id/main_korName"
             app:layout_constraintLeft_toLeftOf="@id/main_korName"/>
@@ -53,7 +55,7 @@
             android:layout_marginTop="10dp"
             android:elevation="10dp"
             android:textSize="15dp"
-            android:textColor="@color/loginBtnColor"
+            android:textColor="@color/BtnColor"
             android:text="웹메일예시"
             app:layout_constraintTop_toBottomOf="@+id/main_college"
             app:layout_constraintLeft_toLeftOf="@id/main_korName"/>

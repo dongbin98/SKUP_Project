@@ -3,6 +3,7 @@ package com.dbsh.practiceproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.security.keystore.StrongBoxUnavailableException;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class MainActivity extends AppCompatActivity {
 
     BottomNavigationView bottomNavigationView;
+    Menu menu;
     MainHomeFragment homeFragment;
     MainMenuFramgment menuFragment;
     MainSettingFragment settingFragment;
@@ -25,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
+        menu = bottomNavigationView.getMenu();
         homeFragment = new MainHomeFragment();
         menuFragment = new MainMenuFramgment();
         settingFragment = new MainSettingFragment();
-
         getSupportFragmentManager().beginTransaction().add(R.id.main_container, homeFragment).commit();
+        menu.findItem(R.id.home_fragment).setChecked(true);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.main_container, settingFragment).commit();
                         break;
                 }
-                return false;
+                return true;
             }
         });
     }
