@@ -173,7 +173,7 @@ public class LoginActivity extends AppCompatActivity {
                 autoLoginEdit.putBoolean("checked", true);
                 autoLoginEdit.commit();
             }
-            // 유저정보 받아오기
+            // 유저정보 저장하기
             JSONObject UserInfo = response.getJSONObject("USER_INFO");
             ((userClass) getApplication()).setId(UserInfo.get("ID").toString());
             ((userClass) getApplication()).setKorName(UserInfo.get("KOR_NAME").toString());
@@ -195,7 +195,8 @@ public class LoginActivity extends AppCompatActivity {
                     ((userClass) getApplication()).addYearlist(YearList.getJSONObject(i).get("value").toString());
             }
             // 메뉴 페이지로 넘어가기
-            Intent intent = new Intent(this, MenuActivity.class);
+            //Intent intent = new Intent(this, MenuActivity.class);
+            Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } catch (IOException | JSONException exception) {
             exception.printStackTrace();

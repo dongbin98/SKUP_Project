@@ -24,7 +24,6 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lectureplan_detail_tabs"
         app:layout_constraintBottom_toBottomOf="parent">
-
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

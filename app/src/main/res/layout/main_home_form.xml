@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/main_info_view"
+            android:layout_width="350dp"
+            android:layout_height="150dp"
+            android:src="@drawable/menu_card"
+            android:elevation="9dp"
+            android:layout_marginTop="30dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/main_korName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="10dp"
+            android:textSize="30dp"
+            android:fontFamily="@font/jalnan"
+            android:textColor="@color/loginBtnColor"
+            android:text="이름예시"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <TextView
+            android:id="@+id/main_college"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp"
+            android:textSize="15dp"
+            android:textColor="@color/loginBtnColor"
+            android:text="학적정보예시"
+            app:layout_constraintTop_toBottomOf="@+id/main_korName"
+            app:layout_constraintLeft_toLeftOf="@id/main_korName"/>
+
+        <TextView
+            android:id="@+id/main_webmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp"
+            android:textSize="15dp"
+            android:textColor="@color/loginBtnColor"
+            android:text="웹메일예시"
+            app:layout_constraintTop_toBottomOf="@+id/main_college"
+            app:layout_constraintLeft_toLeftOf="@id/main_korName"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

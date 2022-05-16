@@ -31,6 +31,7 @@
         <activity android:name=".AttendanceActivity"/>
         <activity android:name=".LecturePlanDetailActivity"/>
         <activity android:name=".TimetableActivity"/>
+        <activity android:name=".MainActivity"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
