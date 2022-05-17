@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="서경대 본관"
             android:textSize="12dp"
-            android:textColor="@color/onlyBlack"
+            android:textColor="@color/black"
             android:fontFamily="@font/default_font"
             android:layout_marginLeft="1dp"
             app:layout_constraintTop_toTopOf="@id/card3_text1"
