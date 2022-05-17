@@ -1,9 +1,6 @@
 package com.dbsh.practiceproject;
 
-import android.annotation.SuppressLint;
-import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,63 +10,65 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.ImageButton;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
-
-import java.net.HttpURLConnection;
-import java.util.ArrayList;
-import java.util.Calendar;
+import me.relex.circleindicator.CircleIndicator3;
 
 public class MainHomeFragment extends Fragment {
     private static final String timetableURL = "https://sportal.skuniv.ac.kr/sportal/common/selectList.sku";
 
     userClass userClass;
 
-    private ViewPager2 mPager;
-    private FragmentStateAdapter pagerAdapter;
+    private ViewPager2 mPager, mPager2, mPager3;
+    private CircleIndicator3 mIndicator;
+    private FragmentStateAdapter pagerAdapter, pagerAdapter2, pagerAdapter3;
     private int num_page = 3;
+    private int num_page2 = 3;
+    private int num_page3 = 3;
 
-    ArrayList<String> todayList;
-    Calendar cal = Calendar.getInstance();
-    String token, id, year, term;
-
-    Bundle bundle1, bundle2, bundle3;
+    ImageButton main_home_quick_btn1, main_home_quick_btn2, main_home_quick_btn3;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.main_home_form, container, false);
         userClass = ((userClass) getActivity().getApplication());
+        main_home_quick_btn1 = (ImageButton) rootView.findViewById(R.id.main_home_quick_btn1);
+        main_home_quick_btn2 = (ImageButton) rootView.findViewById(R.id.main_home_quick_btn2);
+        main_home_quick_btn3 = (ImageButton) rootView.findViewById(R.id.main_home_quick_btn3);
+        // 출결
+        main_home_quick_btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AttendanceActivity.class);
+                startActivity(intent);
+            }
+        });
+        // 학사일정
+        main_home_quick_btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            }
+        });
+        // QR
+        main_home_quick_btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), QRActivity.class);
+                startActivity(intent);
+            }
+        });
 
-        token = userClass.getToken();
-        id = userClass.getId();
-        year = userClass.getSchYear();
-        term = userClass.getSchTerm();
-
-        bundle1 = new Bundle();
-
-        String college_major = userClass.getColName() + "\n" + userClass.getDeptName();
-        String stu_info = userClass.getId() + " " + userClass.getKorName();
-        String mail_addr = userClass.getEmailAddress();
-        String mentor_name = userClass.getTutorName() + " 멘토";
-        String haknyun_text = userClass.getSchYR() + "학년";
-
-        bundle1.putString("cm", college_major);
-        bundle1.putString("si", stu_info);
-        bundle1.putString("ma", mail_addr);
-        bundle1.putString("mn", mentor_name);
-        bundle1.putString("ht", haknyun_text);
 
         mPager = rootView.findViewById(R.id.viewpager);
-        pagerAdapter = new CardAdapter(getActivity(), num_page, bundle1);
+        pagerAdapter = new MainCardAdapter(getActivity(), num_page);
         mPager.setAdapter(pagerAdapter);
         mPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
         mPager.setCurrentItem(0);
         mPager.setOffscreenPageLimit(3);
+
+        mIndicator = rootView.findViewById(R.id.indicator);
+        mIndicator.setViewPager(mPager);
+        mIndicator.createIndicators(num_page,0);
 
         mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
@@ -82,8 +81,52 @@ public class MainHomeFragment extends Fragment {
             @Override
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
+                mIndicator.animatePageSelected(position%num_page);
             }
         });
+
+        mPager2 = rootView.findViewById(R.id.viewpager2);
+        pagerAdapter2 = new MainCardAdapter2(getActivity(), num_page2);
+        mPager2.setAdapter(pagerAdapter2);
+        mPager2.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
+        mPager2.setCurrentItem(0);
+        mPager2.setOffscreenPageLimit(3);
+
+        mPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                if (positionOffsetPixels == 0) {
+                    mPager2.setCurrentItem(position);
+                }
+            }
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+            }
+        });
+
+        mPager3 = rootView.findViewById(R.id.viewpager3);
+        pagerAdapter3 = new MainCardAdapter3(getActivity(), num_page3);
+        mPager3.setAdapter(pagerAdapter3);
+        mPager3.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
+        mPager3.setCurrentItem(0);
+        mPager3.setOffscreenPageLimit(3);
+
+        mPager3.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                if (positionOffsetPixels == 0) {
+                    mPager3.setCurrentItem(position);
+                }
+            }
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+            }
+        });
+
         return rootView;
     }
 }

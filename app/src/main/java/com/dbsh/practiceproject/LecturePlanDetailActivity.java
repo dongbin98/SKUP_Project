@@ -6,10 +6,14 @@ import android.util.Log;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager2.adapter.FragmentStateAdapter;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,12 +28,18 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
+import me.relex.circleindicator.CircleIndicator3;
+
 public class LecturePlanDetailActivity extends AppCompatActivity {
     String token, id, year, term, cd, cn, pi, sn;           // 토큰, 학번, 년, 학기, 학수번호, 분반, 교수명, 과목명
 
     TabLayout tabs;
     LecturePlanDetailInfoFragment infoFragment;
     LecturePlanDetailWeekFragment weekFragment;
+
+    private ViewPager2 mPager;
+    private FragmentStateAdapter pagerAdapter;
+    private int num_page = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,53 +67,39 @@ public class LecturePlanDetailActivity extends AppCompatActivity {
         bundle.putString("pi", pi);
         bundle.putString("sn", sn);
 
-        infoFragment = new LecturePlanDetailInfoFragment();
-        infoFragment.setArguments(bundle);
-
-        getSupportFragmentManager().beginTransaction().add(R.id.container, infoFragment).commit();
         tabs = findViewById(R.id.lectureplan_detail_tabs);
+        String[] titles = new String[] {"강의계획서 개요", "주차별 진도계획"};
+        /*
         tabs.addTab(tabs.newTab().setText("강의계획서 개요"));
         tabs.addTab(tabs.newTab().setText("주차별 진도계획"));
+         */
 
-        tabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        mPager = findViewById(R.id.container);
+        pagerAdapter = new LectureDetailAdapter(this, num_page, bundle);
+        mPager.setAdapter(pagerAdapter);
+        mPager.setOrientation(ViewPager2.ORIENTATION_HORIZONTAL);
+        mPager.setCurrentItem(0);
+        mPager.setOffscreenPageLimit(2);
+
+        mPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                int position = tab.getPosition();
-                if (position == 0) {
-                    if(infoFragment != null) {
-                        getSupportFragmentManager().beginTransaction().show(infoFragment).commit();
-                    }
-                    if (weekFragment != null) {
-                        getSupportFragmentManager().beginTransaction().hide(weekFragment).commit();
-                    }
-                }
-                else {
-                    if(weekFragment == null) {
-                        weekFragment = new LecturePlanDetailWeekFragment();
-                        weekFragment.setArguments(bundle);
-                        getSupportFragmentManager().beginTransaction().add(R.id.container, weekFragment).commit();
-                    }
-                    if (weekFragment != null) {
-                        getSupportFragmentManager().beginTransaction().show(weekFragment).commit();
-                    }
-                    if(infoFragment != null) {
-                        getSupportFragmentManager().beginTransaction().hide(infoFragment).commit();
-                    }
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+                if (positionOffsetPixels == 0) {
+                    mPager.setCurrentItem(position);
                 }
             }
-
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
+            public void onPageSelected(int position) { super.onPageSelected(position); }
         });
-    }
-    public void getDetailWeek(String token, String id, String year, String term, String cd, String cn) {
 
+        // new TabLayoutMediator(tabs, mPager, (tab, position) -> tab.setText(titles[position])).attach();
+        // 아래와 동일한 표현
+        new TabLayoutMediator(tabs, mPager, new TabLayoutMediator.TabConfigurationStrategy() {
+            @Override
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+                tab.setText(titles[position]);
+            }
+        }).attach();
     }
 }

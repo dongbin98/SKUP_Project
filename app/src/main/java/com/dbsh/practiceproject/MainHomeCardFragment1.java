@@ -11,12 +11,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class MainHomeCardFragment1 extends Fragment {
+
+    userClass userClass;
+
     TextView college_major;
     TextView stu_info;
     TextView mail_addr;
     TextView mentor_name;
     TextView haknyun_text;
-    String cm, si, ma, mn, ht;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -28,19 +31,20 @@ public class MainHomeCardFragment1 extends Fragment {
         mentor_name = rootView.findViewById(R.id.card1_mentor_name);
         haknyun_text = rootView.findViewById(R.id.card1_haknyun_text);
 
-        if (getArguments() != null) {
-            cm = getArguments().getString("cm");
-            si = getArguments().getString("si");
-            ma = getArguments().getString("ma");
-            mn = getArguments().getString("mn");
-            ht = getArguments().getString("ht");
+        userClass = ((userClass) getActivity().getApplication());
 
-            college_major.setText(cm);
-            stu_info.setText(si);
-            mail_addr.setText(ma);
-            mentor_name.setText(mn);
-            haknyun_text.setText(ht);
-        }
+        String cm = userClass.getColName() + "\n" + userClass.getDeptName();
+        String si = userClass.getId() + " " + userClass.getKorName();
+        String ma = userClass.getEmailAddress();
+        String mn = userClass.getTutorName() + " 멘토";
+        String ht = userClass.getSchYR() + "학년";
+
+        college_major.setText(cm);
+        stu_info.setText(si);
+        mail_addr.setText(ma);
+        mentor_name.setText(mn);
+        haknyun_text.setText(ht);
+
         return rootView;
     }
 }

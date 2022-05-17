@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="320dp"
-    android:layout_height="200dp"
+    android:layout_height="210dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,13 +19,14 @@
             android:textSize="16dp"
             android:fontFamily="@font/default_font"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
         <TableLayout
             android:id="@+id/card2_timetableTodayTable"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             app:layout_constraintLeft_toLeftOf="@id/card2_today"
             app:layout_constraintTop_toBottomOf="@+id/card2_today">
         </TableLayout>

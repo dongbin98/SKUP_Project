@@ -7,13 +7,21 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/boxframe.xml" value="0.2595" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/button_click.xml" value="0.197" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/home_btn.xml" value="0.27" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/home_card_design2.xml" value="0.27" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/home_card_design3.xml" value="0.27" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2725" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/ic_quickbtn.xml" value="0.27" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/indicator_select.xml" value="0.27" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/indicator_selected.xml" value="0.27" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/indicator_unselect.xml" value="0.27" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/indicator_unselected.xml" value="0.27" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/lectureplan_tab_background.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/lectureplan_tab_selected.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/lectureplan_tab_unselected.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_button.xml" value="0.2595" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_edittext.xml" value="0.2595" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_switch_backgroud.xml" value="0.2725" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_switch_background.xml" value="0.27" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_switch_off.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_switch_on.xml" value="0.2725" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/drawable/login_switch_thumb.xml" value="0.2725" />
@@ -49,6 +57,12 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card1_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card2_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card3_form.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card4_form.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card5_form.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card6_form.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card7_form.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card8_form.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_card9_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_home_form.xml" value="0.1875" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_menu_form.xml" value="0.25" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/main_setting_form.xml" value="0.36614583333333334" />

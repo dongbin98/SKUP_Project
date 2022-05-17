@@ -26,7 +26,7 @@
                 android:id="@+id/infoView"
                 android:layout_width="350dp"
                 android:layout_height="150dp"
-                android:background="@drawable/menu_card"
+                android:background="@drawable/home_card_design"
                 android:elevation="9dp"
                 android:layout_marginTop="30dp"
                 app:layout_constraintLeft_toLeftOf="parent"

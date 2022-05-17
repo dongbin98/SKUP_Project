@@ -1,8 +1,7 @@
 package com.dbsh.practiceproject;
 
-import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,21 +15,15 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.tabs.TabLayout;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class LecturePlanDetailInfoFragment extends Fragment {
 
@@ -38,6 +31,9 @@ public class LecturePlanDetailInfoFragment extends Fragment {
     private static final String bookInfoURL = "https://sportal.skuniv.ac.kr/sportal/common/selectList.sku";     // 주차별, 교재
     private static final String POST = "POST";
     HttpURLConnection connection;
+
+    NetworkTask1 networkTask1;
+    NetworkTask2 networkTask2;
 
     String token, id, year, term, cd, cn, pi, sn;           // 토큰, 학번, 년, 학기, 학수번호, 분반, 교수명, 과목명
 
@@ -157,87 +153,168 @@ public class LecturePlanDetailInfoFragment extends Fragment {
             cn = getArguments().getString("cn");
             pi = getArguments().getString("pi");
             sn = getArguments().getString("sn");
-
-            System.out.println(token+ id+ year+ term+ cd+ cn+ pi);
         }
         lectureplan_detail_info_subjectName.setText(sn);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                getDetailInfo(token, id, year, term, cd, cn, pi);
-                getBookInfo(token, id, year, term, cd, cn, pi);
-                // 쓰레드 안에서 UI 변경 시 필요
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        lectureplan_detail_info_subject.setText(info_subject);
-                        lectureplan_detail_info_cd.setText(info_cd);
-                        lectureplan_detail_info_dept.setText(info_dept);
-                        lectureplan_detail_info_term.setText(info_term);
-                        lectureplan_detail_info_point.setText(info_point);
-                        lectureplan_detail_info_evalLevel.setText(info_evalLevel);
-                        lectureplan_detail_info_completeName.setText(info_completeName);
-                        lectureplan_detail_info_day.setText(info_day);
-                        lectureplan_detail_info_room.setText(info_room);
-                        lectureplan_detail_info_professorName.setText(info_professorName);
-                        lectureplan_detail_info_professorPhone.setText(info_professorPhone);
-                        lectureplan_detail_info_professorEmail.setText(info_professorEmail);
-                        lectureplan_detail_info_explain.setText(info_explain);
-                        lectureplan_detail_info_goal.setText(info_goal);
-                        lectureplan_detail_info_how_evaluate.setText(info_how_evaluate);
-                        lectureplan_detail_info_major_ability.setText(info_major_ability);
-                        lectureplan_detail_info_notice.setText(info_notice);
-                        if(info_lecture.equals("Y")) lectureplan_detail_info_cbx_1.setChecked(true);
-                        if(info_debate.equals("Y")) lectureplan_detail_info_cbx_2.setChecked(true);
-                        if(info_practical.equals("Y")) lectureplan_detail_info_cbx_3.setChecked(true);
-                        if(info_team.equals("Y")) lectureplan_detail_info_cbx_4.setChecked(true);
-                        if(info_project.equals("Y")) lectureplan_detail_info_cbx_5.setChecked(true);
-                        if(info_problem.equals("Y")) lectureplan_detail_info_cbx_6.setChecked(true);
-                        if(info_flip.equals("Y")) lectureplan_detail_info_cbx_7.setChecked(true);
-                        if(info_invitation.equals("Y")) lectureplan_detail_info_cbx_8.setChecked(true);
-                        if(info_individual.equals("Y")) lectureplan_detail_info_cbx_9.setChecked(true);
-                        if(info_experience.equals("Y")) lectureplan_detail_info_cbx_10.setChecked(true);
-                        if(info_online.equals("Y")) lectureplan_detail_info_cbx_11.setChecked(true);
-                        if(info_action.equals("Y")) lectureplan_detail_info_cbx_12.setChecked(true);
-                        for(int i = 0; i < tableList.size(); i++) {
-                            TableRow tableRow = new TableRow(rootView.getContext());
-                            tableRow.setBackground(rootView.getContext().getDrawable(R.drawable.tableframe));
-                            tableRow.setLayoutParams(new TableRow.LayoutParams(
-                                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                                    ViewGroup.LayoutParams.WRAP_CONTENT
-                            ));
-                            for(int j = 0; j < tableList.get(i).size(); j++) {
-                                TextView textView = new TextView(rootView.getContext());
-                                switch(j) {
-                                    case 0:
-                                        textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 4.0f));
-                                        break;
-                                    case 1:
-                                        textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 2.0f));
-                                        break;
-                                    case 2:
-                                        textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 2.0f));
-                                        break;
-                                    case 3:
-                                        textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 2.0f));
-                                        break;
-                                    default:
-                                        break;
-                                }
-                                textView.setText(tableList.get(i).get(j));
-                                textView.setGravity(Gravity.CENTER);
-                                textView.setTextColor(rootView.getContext().getColor(R.color.black));
-                                tableRow.addView(textView);
-                            }
-                            lectureplan_detail_info_bookTable.addView(tableRow);
-                        }
-                    }
-                });
-            }
-        }).start();
+        networkTask1 = new NetworkTask1(token, id, year, term, cd, cn, pi);
+        networkTask1.execute();
+
+        networkTask2 = new NetworkTask2(rootView, token, id, year, term, cd, cn, pi);
+        networkTask2.execute();
+
         return rootView;
     }
+
+    public class NetworkTask1 extends AsyncTask<Void, Void, Void> implements com.dbsh.practiceproject.NetworkTask1 {
+        String token;
+        String id;
+        String year;
+        String term;
+        String cd;
+        String cn;
+        String pi;
+        ArrayList<String> result;
+
+        public NetworkTask1(String token, String id, String year, String term, String cd, String cn, String pi) {
+            this.id = id;
+            this.token = token;
+            this.year = year;
+            this.term = term;
+            this.cd = cd;
+            this.cn = cn;
+            this.pi = pi;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            getDetailInfo(token, id, year, term, cd, cn, pi);
+            return null;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+        }
+
+        @Override
+        protected void onPostExecute(Void unused) {
+            lectureplan_detail_info_subject.setText(info_subject);
+            lectureplan_detail_info_cd.setText(info_cd);
+            lectureplan_detail_info_dept.setText(info_dept);
+            lectureplan_detail_info_term.setText(info_term);
+            lectureplan_detail_info_point.setText(info_point);
+            lectureplan_detail_info_evalLevel.setText(info_evalLevel);
+            lectureplan_detail_info_completeName.setText(info_completeName);
+            lectureplan_detail_info_day.setText(info_day);
+            lectureplan_detail_info_room.setText(info_room);
+            lectureplan_detail_info_professorName.setText(info_professorName);
+            lectureplan_detail_info_professorPhone.setText(info_professorPhone);
+            lectureplan_detail_info_professorEmail.setText(info_professorEmail);
+            lectureplan_detail_info_explain.setText(info_explain);
+            lectureplan_detail_info_goal.setText(info_goal);
+            lectureplan_detail_info_how_evaluate.setText(info_how_evaluate);
+            lectureplan_detail_info_major_ability.setText(info_major_ability);
+            lectureplan_detail_info_notice.setText(info_notice);
+            if(info_lecture.equals("Y")) lectureplan_detail_info_cbx_1.setChecked(true);
+            if(info_debate.equals("Y")) lectureplan_detail_info_cbx_2.setChecked(true);
+            if(info_practical.equals("Y")) lectureplan_detail_info_cbx_3.setChecked(true);
+            if(info_team.equals("Y")) lectureplan_detail_info_cbx_4.setChecked(true);
+            if(info_project.equals("Y")) lectureplan_detail_info_cbx_5.setChecked(true);
+            if(info_problem.equals("Y")) lectureplan_detail_info_cbx_6.setChecked(true);
+            if(info_flip.equals("Y")) lectureplan_detail_info_cbx_7.setChecked(true);
+            if(info_invitation.equals("Y")) lectureplan_detail_info_cbx_8.setChecked(true);
+            if(info_individual.equals("Y")) lectureplan_detail_info_cbx_9.setChecked(true);
+            if(info_experience.equals("Y")) lectureplan_detail_info_cbx_10.setChecked(true);
+            if(info_online.equals("Y")) lectureplan_detail_info_cbx_11.setChecked(true);
+            if(info_action.equals("Y")) lectureplan_detail_info_cbx_12.setChecked(true);
+        }
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
+    public class NetworkTask2 extends AsyncTask<Void, Void, ArrayList<ArrayList<String>>> {
+        ViewGroup rootView;
+        String token;
+        String id;
+        String year;
+        String term;
+        String cd;
+        String cn;
+        String pi;
+        ArrayList<ArrayList<String>> result;
+
+        public NetworkTask2(ViewGroup rootView, String token, String id, String year, String term, String cd, String cn, String pi) {
+            this.rootView = rootView;
+            this.id = id;
+            this.token = token;
+            this.year = year;
+            this.term = term;
+            this.cd = cd;
+            this.cn = cn;
+            this.pi = pi;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected ArrayList<ArrayList<String>> doInBackground(Void... params) {
+            result = getBookInfo(token, id, year, term, cd, cn, pi);
+            return result;
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+        }
+        @Override
+        protected void onPostExecute(ArrayList<ArrayList<String>> result) {
+            for(int i = 0; i < result.size(); i++) {
+                TableRow tableRow = new TableRow(rootView.getContext());
+                tableRow.setBackground(rootView.getContext().getDrawable(R.drawable.tableframe));
+                tableRow.setLayoutParams(new TableRow.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                ));
+                for (int j = 0; j < result.get(i).size(); j++) {
+                    TextView textView = new TextView(rootView.getContext());
+                    switch (j) {
+                        case 0:
+                            textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 4.0f));
+                            break;
+                        case 1:
+                            textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 2.0f));
+                            break;
+                        case 2:
+                            textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 2.0f));
+                            break;
+                        case 3:
+                            textView.setLayoutParams(new TableRow.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 2.0f));
+                            break;
+                        default:
+                            break;
+                    }
+                    textView.setText(result.get(i).get(j));
+                    textView.setGravity(Gravity.CENTER);
+                    textView.setTextColor(rootView.getContext().getColor(R.color.black));
+                    tableRow.addView(textView);
+                }
+                lectureplan_detail_info_bookTable.addView(tableRow);
+            }
+        }
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+    }
+
     public void getDetailInfo(String token, String id, String year, String term, String cd, String cn, String pi) {
         try {
             JSONObject payload = new JSONObject();
@@ -317,7 +394,7 @@ public class LecturePlanDetailInfoFragment extends Fragment {
         }
     }
 
-    public void getBookInfo(String token, String id, String year, String term, String cd, String cn, String pi) {
+    public ArrayList<ArrayList<String>> getBookInfo(String token, String id, String year, String term, String cd, String cn, String pi) {
         try {
             // ----------------------------
             // URL 설정 및 접속
@@ -361,8 +438,10 @@ public class LecturePlanDetailInfoFragment extends Fragment {
                     tableList.add(tmpList);
                 }
             }
+            return tableList;
         } catch (IOException | JSONException exception) {
             exception.printStackTrace();
+            return null;
         }
     }
 }
