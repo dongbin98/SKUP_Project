@@ -72,7 +72,8 @@ public class MainMenuFramgment extends Fragment {
         main_menu_scholarship_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(getActivity(), ScholarshipActivity.class);
+                startActivity(intent);
             }
         });
 
