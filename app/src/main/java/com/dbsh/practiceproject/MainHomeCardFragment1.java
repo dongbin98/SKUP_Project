@@ -22,11 +22,11 @@ public class MainHomeCardFragment1 extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.main_home_card1_form, container, false);
 
-        college_major = rootView.findViewById(R.id.college_major);
-        stu_info = rootView.findViewById(R.id.stu_info);
-        mail_addr = rootView.findViewById(R.id.mail_addr);
-        mentor_name = rootView.findViewById(R.id.mentor_name);
-        haknyun_text = rootView.findViewById(R.id.haknyun_text);
+        college_major = rootView.findViewById(R.id.card1_college_major);
+        stu_info = rootView.findViewById(R.id.card1_stu_info);
+        mail_addr = rootView.findViewById(R.id.card1_mail_addr);
+        mentor_name = rootView.findViewById(R.id.card1_mentor_name);
+        haknyun_text = rootView.findViewById(R.id.card1_haknyun_text);
 
         if (getArguments() != null) {
             cm = getArguments().getString("cm");
@@ -41,7 +41,6 @@ public class MainHomeCardFragment1 extends Fragment {
             mentor_name.setText(mn);
             haknyun_text.setText(ht);
         }
-
         return rootView;
     }
 }

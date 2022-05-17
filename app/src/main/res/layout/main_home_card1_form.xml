@@ -10,7 +10,7 @@
         android:background="@drawable/menu_card">
 
         <ImageView
-            android:id="@+id/univ_logo"
+            android:id="@+id/card1_univ_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="12dp"
@@ -20,89 +20,89 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/major_character"
+            android:id="@+id/card1_major_character"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:layout_marginTop="13dp"
             android:src="@drawable/sku_enzi"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/univ_logo" />
+            app:layout_constraintTop_toBottomOf="@id/card1_univ_logo" />
 
         <TextView
-            android:id="@+id/college_major"
+            android:id="@+id/card1_college_major"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="60dp"
             android:fontFamily="@font/default_font"
-            android:text="이공대학\n컴퓨터공학과"
+            android:hint="단대 학과"
             android:textColor="@color/BtnColor"
             android:textSize="14dp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/major_character"
+            app:layout_constraintLeft_toRightOf="@id/card1_major_character"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/stu_info"
+            android:id="@+id/card1_stu_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:fontFamily="@font/default_font"
-            android:text="2017305045 염동빈"
+            android:hint="2017305045 염동빈"
             android:textColor="@color/BtnColor"
             android:textSize="14dp"
             android:textStyle="bold"
-            app:layout_constraintLeft_toRightOf="@id/major_character"
-            app:layout_constraintTop_toBottomOf="@id/college_major" />
+            app:layout_constraintLeft_toRightOf="@id/card1_major_character"
+            app:layout_constraintTop_toBottomOf="@id/card1_college_major" />
 
         <ImageView
-            android:id="@+id/mentor_img"
+            android:id="@+id/card1_mentor_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:src="@drawable/mentor"
-            app:layout_constraintLeft_toRightOf="@id/major_character"
-            app:layout_constraintTop_toBottomOf="@id/stu_info" />
+            app:layout_constraintLeft_toRightOf="@id/card1_major_character"
+            app:layout_constraintTop_toBottomOf="@id/card1_stu_info" />
 
         <ImageView
-            android:id="@+id/mail_img"
+            android:id="@+id/card1_mail_img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="6dp"
             android:src="@drawable/mail"
-            app:layout_constraintLeft_toRightOf="@id/major_character"
-            app:layout_constraintTop_toBottomOf="@id/mentor_img" />
+            app:layout_constraintLeft_toRightOf="@id/card1_major_character"
+            app:layout_constraintTop_toBottomOf="@id/card1_mentor_img" />
 
         <TextView
-            android:id="@+id/mentor_name"
+            android:id="@+id/card1_mentor_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:fontFamily="@font/default_font"
-            android:text="박태룡 멘토"
+            android:hint="멘토이름"
             android:textColor="@color/BtnColor"
             android:textSize="10dp"
-            app:layout_constraintBottom_toBottomOf="@id/mentor_img"
-            app:layout_constraintLeft_toRightOf="@id/mentor_img"
-            app:layout_constraintTop_toTopOf="@id/mentor_img" />
+            app:layout_constraintBottom_toBottomOf="@id/card1_mentor_img"
+            app:layout_constraintLeft_toRightOf="@id/card1_mentor_img"
+            app:layout_constraintTop_toTopOf="@id/card1_mentor_img" />
 
         <TextView
-            android:id="@+id/mail_addr"
+            android:id="@+id/card1_mail_addr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="4dp"
             android:fontFamily="@font/default_font"
-            android:text="yeomdongbin@skuniv.ac.kr"
+            android:hint="이메일예시"
             android:textColor="@color/BtnColor"
             android:textSize="10dp"
-            app:layout_constraintBottom_toBottomOf="@id/mail_img"
-            app:layout_constraintLeft_toRightOf="@id/mail_img"
-            app:layout_constraintTop_toTopOf="@id/mail_img" />
+            app:layout_constraintBottom_toBottomOf="@id/card1_mail_img"
+            app:layout_constraintLeft_toRightOf="@id/card1_mail_img"
+            app:layout_constraintTop_toTopOf="@id/card1_mail_img" />
 
         <ImageView
-            android:id="@+id/haknyun_img"
+            android:id="@+id/card1_haknyun_img"
             android:layout_width="44dp"
             android:layout_height="18dp"
             android:src="@drawable/boxframe"
@@ -112,17 +112,18 @@
             app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
-            android:id="@+id/haknyun_text"
+            android:id="@+id/card1_haknyun_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/default_font"
-            android:text="4학년"
+            android:hint="학년예시"
             android:textColor="@color/BtnColor"
             android:textSize="10dp"
-            app:layout_constraintLeft_toLeftOf="@id/haknyun_img"
-            app:layout_constraintRight_toRightOf="@id/haknyun_img"
-            app:layout_constraintTop_toTopOf="@id/haknyun_img"
-            app:layout_constraintBottom_toBottomOf="@id/haknyun_img"/>
+            android:textAlignment="center"
+            app:layout_constraintLeft_toLeftOf="@id/card1_haknyun_img"
+            app:layout_constraintRight_toRightOf="@id/card1_haknyun_img"
+            app:layout_constraintTop_toTopOf="@id/card1_haknyun_img"
+            app:layout_constraintBottom_toBottomOf="@id/card1_haknyun_img"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
