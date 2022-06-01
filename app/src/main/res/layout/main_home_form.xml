@@ -37,6 +37,7 @@
                 android:layout_height="230dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
+                android:background="@color/homeforegroundColor"
                 app:layout_constraintTop_toBottomOf="@id/skup_logo2"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>

@@ -8,7 +8,7 @@
         android:layout_width="320dp"
         android:layout_height="210dp"
         android:layout_gravity="center"
-        android:elevation="20dp"
+        android:elevation="5dp"
         android:background="@drawable/timetable_background">
 
         <TextView
