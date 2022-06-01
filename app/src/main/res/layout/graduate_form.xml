@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
+    android:background="@color/homeforegroundColor"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <TableLayout
         android:id="@+id/GraduateTable"
