@@ -15,4 +15,7 @@
     <color name="onlyWhite">#FFFFFF</color>
     <color name="cardgridentStartColor">#FF4E7CD7</color>
     <color name="cardgridentEndColor">#FF78B4DF</color>
+    <color name="homebackgroundColor">#FFE5E5E5</color>
+    <color name="homeforegroundColor">#FFFFFFFF</color>
+    <color name="logineditColor">#FFFFFFFF</color>
 </resources>

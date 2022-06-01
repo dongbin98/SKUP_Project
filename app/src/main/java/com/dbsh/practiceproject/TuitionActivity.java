@@ -3,10 +3,13 @@ package com.dbsh.practiceproject;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -28,31 +31,11 @@ public class TuitionActivity extends AppCompatActivity {
     private static final String POST = "POST";
     HttpURLConnection connection;
 
-    TableLayout basicInform;
-    TextView name;          // 이름
-    String nameStr;
-    TextView basicId;       // 학번
-    String idStr;
-    TextView major;         // 전공
-    String majorStr;
-    TextView schYR;         // 학년
-    String schYRStr;
-    TextView entDiv;        // 입학구분
-    String entDivStr;
-    TextView entDay;        // 입학일자
-    String entDayStr;
-    TextView regStat;       // 재학
-    String regStatStr;
-    TextView subPnt;        // 수강신청학점
-    String subPntStr;
-    TextView isuHakgi;      // 이수학기
-    String isuHakgiStr;
-    TextView regSchTerm;    // 등록학기
-    String regSchTermStr;
+    ImageView view;          // 백그라운드
+    TextView divide_text;    // 납부 완료 OR 납부 미완료
+    ImageView circle;        // 납부 완료 미완료 동그라미
 
-    TableLayout tuitionInform;
-    TextView yearterm;      // 학년도 & 학기
-    String yeartermStr;
+    TextView title;         // 제목
     TextView entFee;        // 입학금
     String entFeeStr;
     TextView lesnFee;       // 수업료
@@ -69,12 +52,7 @@ public class TuitionActivity extends AppCompatActivity {
     String totAmtStr;
     TextView regAmt;        // 납부금액
     String regAmtStr;
-    TextView paidStat;      // 납부상태
-    String paidStatStr;
-    TextView nonPay;        // 미납금액
-    String nonPayStr;
-    TextView payDate;       // 납부일자
-    String payDateStr;
+    String nonPay;     // 미납금액
     TextView tmpAcct;       // 신한은행 가상계좌
     String tmpAcctStr;
 
@@ -89,34 +67,26 @@ public class TuitionActivity extends AppCompatActivity {
         String year = ((userClass) getApplication()).getSchYear();
         String term = ((userClass) getApplication()).getSchTerm();
 
-        // BasicTable 내용
-        basicInform = (TableLayout) findViewById(R.id.BasicInformTable);        // 기본정보 테이블
-        name = (TextView) findViewById(R.id.BasicInformTableName);              // 이름
-        basicId = (TextView) findViewById(R.id.BasicInformTableID);             // 학번
-        major = (TextView) findViewById(R.id.BasicInformTableMajor);            // 전공
-        schYR = (TextView) findViewById(R.id.BasicInformTableSchYR);            // 학년
-        entDiv = (TextView) findViewById(R.id.BasicInformTableEntdiv);          // 입학구분
-        entDay = (TextView) findViewById(R.id.BasicInformTableEntday);          // 입학일자
-        regStat = (TextView) findViewById(R.id.BasicInformTableRegStat);        // 재학
-        subPnt = (TextView) findViewById(R.id.BasicInformTableSubjPoint);       // 수강신청학점
-        isuHakgi = (TextView) findViewById(R.id.BasicInformTableIsuHakgi);      // 이수학기
-        regSchTerm = (TextView) findViewById(R.id.BasicInformTableRegSchTerm);  // 등록학기
+        view = (ImageView) findViewById(R.id.tuition_view);             // 백그라운드
+        divide_text = (TextView) findViewById(R.id.tuition_circle_text);// 납부 완료 or 납부 미완료
+        circle = (ImageView) findViewById(R.id.tuition_circle);         // 납부 완료 미완료 동그라미
+        
+        title = (TextView) findViewById(R.id.tuition_title);          // 제목
+        entFee = (TextView) findViewById(R.id.tuition_entfee);        // 입학금
+        lesnFee = (TextView) findViewById(R.id.tuition_lesnfee);      // 수업료
+        coopDegree = (TextView) findViewById(R.id.tuition_coopdegree);// 공동학위
+        ussEntFee = (TextView) findViewById(R.id.tuition_ussentfee);  // 장학입학금
+        ussLesnFee = (TextView) findViewById(R.id.tuition_usslesnfee);// 장학수업료
+        sclsTot = (TextView) findViewById(R.id.tuition_sclstot);      // 장학금(합계)
+        totAmt = (TextView) findViewById(R.id.tuition_totamt);        // 등록금합계
+        regAmt = (TextView) findViewById(R.id.tuition_regamt);        // 납부금액
+        tmpAcct = (TextView) findViewById(R.id.tuition_tmpacct);     // 신한은행 가상계좌
 
-        // TuitionTable 내용
-        tuitionInform = (TableLayout) findViewById(R.id.TuitionInformTable);    // 등록금내역 테이블
-        yearterm = (TextView) findViewById(R.id.TuitionInformYear);             // 학년도 & 학기
-        entFee = (TextView) findViewById(R.id.TuitionInformTableEntfee);        // 입학금
-        lesnFee = (TextView) findViewById(R.id.TuitionInformTableLesnfee);      // 수업료
-        coopDegree = (TextView) findViewById(R.id.TuitionInformTableCoopDegree);// 공동학위
-        ussEntFee = (TextView) findViewById(R.id.TuitionInformTableUssEntfee);  // 장학입학금
-        ussLesnFee = (TextView) findViewById(R.id.TuitionInformTableUssLesnfee);// 장학수업료
-        sclsTot = (TextView) findViewById(R.id.TuitionInformTableSclsTot);      // 장학금(합계)
-        totAmt = (TextView) findViewById(R.id.TuitionInformTableTotAmt);        // 등록금합계
-        regAmt = (TextView) findViewById(R.id.TuitionInformTableRegAmt);        // 납부금액
-        paidStat = (TextView) findViewById(R.id.TuitionInformTablePaidStat);    // 납부상태
-        nonPay = (TextView) findViewById(R.id.TuitionInformTableNonPay);        // 미납금액
-        payDate = (TextView) findViewById(R.id.TuitionInformTablePayDate);      // 납부일자
-        tmpAcct = (TextView) findViewById(R.id.TuitionInformTableTempAcct);     // 신한은행 가상계좌
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.qr_toolbar);
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
 
         new Thread(new Runnable() {
             @Override
@@ -127,30 +97,27 @@ public class TuitionActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        name.setText("성명\n" + nameStr);
-                        basicId.setText("학번\n" + idStr);
-                        major.setText("학과/부\n" + majorStr);
-                        schYR.setText("학년\n" + schYRStr);
-                        entDiv.setText("입학구분\n" + entDivStr);
-                        entDay.setText("입학일자\n" + entDayStr);
-                        regStat.setText("학적상태\n" + regStatStr);
-                        subPnt.setText("수강신청학점\n" + subPntStr);
-                        isuHakgi.setText("총이수학기\n" + isuHakgiStr);
-                        regSchTerm.setText("등록학기\n" + regSchTermStr);
-
-                        yearterm.setText(yeartermStr);
-                        entFee.setText("입학금\n" + entFeeStr);
-                        lesnFee.setText("수업료\n" + lesnFeeStr);
-                        coopDegree.setText("공동학위\n" + coopDegreeStr);
-                        ussEntFee.setText("장학입학금\n" + ussEntFeeStr);
-                        ussLesnFee.setText("장학수업료\n" + ussLesnFeeStr);
-                        sclsTot.setText("장학금\n" + sclsTotStr);
-                        totAmt.setText("등록금합계\n" + totAmtStr);
-                        regAmt.setText("납부금액\n" + regAmtStr);
-                        paidStat.setText("납부상태\n" + paidStatStr);
-                        nonPay.setText("미납금액\n" + nonPayStr);
-                        payDate.setText("납부일자\n" + payDateStr);
-                        tmpAcct.setText("신한은행 가상계좌번호\n" + tmpAcctStr);
+                        // 년 월을 userClass에서 가져올지 아니면 웹에서 가져올지 미정 (계절학기 여부)
+                        title.setText(year + "년 " + term + "학기 등록금");
+                        entFee.setText(entFeeStr);
+                        lesnFee.setText(lesnFeeStr);
+                        coopDegree.setText(coopDegreeStr);
+                        ussEntFee.setText(ussEntFeeStr);
+                        ussLesnFee.setText(ussLesnFeeStr);
+                        sclsTot.setText(sclsTotStr);
+                        totAmt.setText(totAmtStr);
+                        regAmt.setText(regAmtStr);
+                        tmpAcct.setText(tmpAcctStr);
+                        if(nonPay.equals("0")) {    // 미납금액 0원원
+                           view.setImageResource(R.drawable.tuition_complete_background);
+                           circle.setImageResource(R.drawable.tuition_complete_circle);
+                           divide_text.setText("납부 완료");
+                        }
+                        else {
+                            view.setImageResource(R.drawable.tuition_none_background);
+                            circle.setImageResource(R.drawable.tuition_none_background);
+                            divide_text.setText("납부 미완료");
+                        }
                     }
                 });
             }
@@ -215,19 +182,7 @@ public class TuitionActivity extends AppCompatActivity {
             JSONObject response = Connector.getInstance().getResponse(tuitionURL, token, payload);
 
             String tmp = response.getJSONObject("MAP").get("SCH_YEAR").toString();
-            // Basic Table
-            nameStr = ((userClass) getApplication()).getKorName();
-            idStr = response.getJSONObject("MAP").get("STU_NO").toString();
-            majorStr = response.getJSONObject("MAP").get("SUBJ_STD_NM").toString();
-            schYRStr = response.getJSONObject("MAP").get("SCHYR").toString();
-            entDivStr = response.getJSONObject("MAP").get("ENT_DIV").toString();
-            entDayStr = response.getJSONObject("MAP").get("ENT_DATE").toString();
-            regStatStr = response.getJSONObject("MAP").get("SCH_REG_STAT_NM").toString();
-            subPntStr = response.getJSONObject("MAP").get("SUBJ_PONT").toString();
-            isuHakgiStr = response.getJSONObject("MAP").get("ISU_HAKGI").toString();
-            regSchTermStr = response.getJSONObject("MAP").get("REG_SCH_TERM").toString();
-            // Tuition Table
-            yeartermStr = response.getJSONObject("MAP").get("SCH_YEAR").toString() + "학년 " + response.getJSONObject("MAP").get("SCH_TERM").toString() + "학기";
+
             entFeeStr = response.getJSONObject("MAP").get("ENT_FEE").toString();
             lesnFeeStr = response.getJSONObject("MAP").get("LESN_FEE").toString();
             coopDegreeStr = response.getJSONObject("MAP").get("COOP_DGR_AMT").toString();
@@ -236,13 +191,22 @@ public class TuitionActivity extends AppCompatActivity {
             sclsTotStr = response.getJSONObject("MAP").get("SCLS_TOT").toString();
             totAmtStr = response.getJSONObject("MAP").get("TOT_AMT").toString();
             regAmtStr = response.getJSONObject("MAP").get("REG_AMT").toString();
-            paidStatStr = response.getJSONObject("MAP").get("PAID_STAT_NM").toString();
-            nonPayStr = response.getJSONObject("MAP").get("NON_PAY").toString();
-            payDateStr = response.getJSONObject("MAP").get("PAY_DATE").toString();
+            nonPay = response.getJSONObject("MAP").get("NON_PAY").toString();
             tmpAcctStr = response.getJSONObject("MAP").get("TEMP_ACCT").toString();
 
         } catch (JSONException exception) {
             exception.printStackTrace();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ //toolbar의 back키 눌렀을 때 동작
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

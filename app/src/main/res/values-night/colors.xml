@@ -6,7 +6,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="white">#FF212124</color>
-    <color name="black">#FFC5C5C5</color>
+    <color name="black">#FFFFFFFF</color>
     <color name="MainColor">#FF4E7CD7</color>
     <color name="tabSColor">#FF212124</color>
     <color name="tabUColor">#FF4D506A</color>
@@ -15,4 +15,7 @@
     <color name="onlyWhite">#FFFFFF</color>
     <color name="cardgridentStartColor">#FF526A98</color>
     <color name="cardgridentEndColor">#FF2B3343</color>
+    <color name="homebackgroundColor">#FF000000</color>
+    <color name="homeforegroundColor">#FF212124</color>
+    <color name="logineditColor">#FF4D4D4D</color>
 </resources>

@@ -63,6 +63,29 @@ public class LoginActivity extends AppCompatActivity {
         loginPW = (EditText) findViewById(R.id.loginPW);
         loginAuto = (Switch) findViewById(R.id.loginAuto);
 
+        loginID.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b) {
+                    loginID.setBackgroundResource(R.drawable.login_edittext_focused);
+                }
+                else {
+                    loginID.setBackgroundResource(R.drawable.login_edittext);
+                }
+            }
+        });
+        loginPW.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if(b) {
+                    loginPW.setBackgroundResource(R.drawable.login_edittext_focused);
+                }
+                else {
+                    loginPW.setBackgroundResource(R.drawable.login_edittext);
+                }
+            }
+        });
+
         if(checked) {
             loginAuto.setChecked(true);
             loginID.setText(userName);
