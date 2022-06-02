@@ -32,11 +32,14 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final String loginURL = "https://sportal.skuniv.ac.kr/sportal/auth2/login.sku";
+    private static final String lectURL = "https://sportal.skuniv.ac.kr/sportal/common/selectList.sku";
+    private static final String lecttimeURL = "https://sportal.skuniv.ac.kr/sportal/common/selectOne.sku";    // 개요
     private static final String POST = "POST";
     public static userClass user = new userClass();
     HttpURLConnection connection;
@@ -214,14 +217,111 @@ public class LoginActivity extends AppCompatActivity {
             if (!((userClass) getApplication()).getYearlist().isEmpty()) {
                 ((userClass) getApplication()).clearYearlist();
             }
+            if (!((userClass) getApplication()).getLectlist().isEmpty()) {
+                ((userClass) getApplication()).clearLectlist();
+            }
+            if (!((userClass) getApplication()).getLecttimelist().isEmpty()) {
+                ((userClass) getApplication()).clearLecttimelist();
+            }
+            if (!((userClass) getApplication()).getLectnumlist().isEmpty()) {
+                ((userClass) getApplication()).clearLectnumlist();
+            }
+            if (!((userClass) getApplication()).getLectproflist().isEmpty()) {
+                ((userClass) getApplication()).clearLectproflist();
+            }
             for (int i = 0; i < YearList.length(); i++) {
                     ((userClass) getApplication()).addYearlist(YearList.getJSONObject(i).get("value").toString());
             }
-            // 메뉴 페이지로 넘어가기
-            //Intent intent = new Intent(this, MenuActivity.class);
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            getLectInfo(((userClass) getApplication()).getToken(),
+                    ((userClass) getApplication()).getId(),
+                    ((userClass) getApplication()).getSchYear(),
+                    ((userClass) getApplication()).getSchTerm());
         } catch (IOException | JSONException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    // 해당 학기 수강 교과목 학수번호, 분반 가져오기
+    public void getLectInfo(String token, String id, String year, String term){
+        try {
+            // ----------------------------
+            // URL 설정 및 접속
+            // ----------------------------
+            JSONObject payload = new JSONObject();
+            JSONObject parameter = new JSONObject();
+
+            parameter.put("ID", id);
+            parameter.put("LECT_YEAR", year);
+            parameter.put("LECT_TERM", term);
+            parameter.put("STNT_NUMB", id);
+            try {
+                payload.put("MAP_ID", "education.ual.UAL_04004_T.select");
+                payload.put("SYS_ID", "AL");
+                payload.put("accessToken", token);
+                payload.put("parameter", parameter);
+                payload.put("path", "common/selectList");
+                payload.put("programID", "main");
+                payload.put("userID", id);
+
+            } catch (JSONException exception) {
+                exception.printStackTrace();
+            }
+            JSONObject response = Connector.getInstance().getResponse(lectURL, token, payload);
+
+            if(response.get("RTN_STATUS").toString().equals("S")) {
+                JSONArray jsonArray = response.getJSONArray("LIST");
+
+                int count = Integer.parseInt(response.get("COUNT").toString());
+
+                for (int i = 0; i < count; i++) {
+                    ((userClass) getApplication()).addLectlist(jsonArray.getJSONObject(i).get("SUBJ_CD").toString());
+                    ((userClass) getApplication()).addLectnumlist(jsonArray.getJSONObject(i).get("CLSS_NUMB").toString());
+                    ((userClass) getApplication()).addLectproflist(jsonArray.getJSONObject(i).get("PROF_NUMB").toString());
+                    getLecttime(token, id, year, term,
+                            ((userClass) getApplication()).getLectlist().get(i),
+                            ((userClass) getApplication()).getLectnumlist().get(i),
+                            ((userClass) getApplication()).getLectproflist().get(i)
+                    );
+                }
+                // 메뉴 페이지로 넘어가기
+                //Intent intent = new Intent(this, MenuActivity.class);
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            }
+        } catch (JSONException exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    // 해당 학기 수강 교과목 수업시간 가져오기
+    public void getLecttime(String token, String id, String year, String term, String cd, String cn, String pi) {
+        try {
+            JSONObject payload = new JSONObject();
+            JSONObject parameter = new JSONObject();
+
+            parameter.put("CLSS_NUMB", cn);
+            parameter.put("LECT_YEAR", year);
+            parameter.put("LECT_TERM", term);
+            parameter.put("SUBJ_CD", cd);
+            parameter.put("STAF_NO", pi);
+            try {
+                payload.put("MAP_ID", "education.ucs.UCS_03100_T.SELECT_REPORT_MAIN");
+                payload.put("SYS_ID", "AL");
+                payload.put("accessToken", token);
+                payload.put("parameter", parameter);
+                payload.put("path", "common/selectOne");
+                payload.put("programID", "main");
+                payload.put("userID", id);
+
+            } catch (JSONException exception) {
+                exception.printStackTrace();
+            }
+            JSONObject response = Connector.getInstance().getResponse(lecttimeURL, token, payload);
+            if(response.get("RTN_STATUS").toString().equals("S")) {
+                JSONObject MAP = response.getJSONObject("MAP");
+                ((userClass) getApplication()).addLecttimelist(MAP.get("SUBJ_TIME").toString());
+            }
+        } catch (JSONException exception) {
             exception.printStackTrace();
         }
     }

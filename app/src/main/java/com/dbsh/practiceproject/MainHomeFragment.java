@@ -39,7 +39,8 @@ public class MainHomeFragment extends Fragment {
         main_home_quick_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AttendanceActivity.class);
+                //Intent intent = new Intent(getActivity(), AttendanceActivity.class);
+                Intent intent = new Intent(getActivity(), AttendanceTmpActivity.class);
                 startActivity(intent);
             }
         });

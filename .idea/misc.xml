@@ -81,13 +81,24 @@
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/timetable_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/layout/tuition_form.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Administrator/AndroidStudioProjects/SKUP_Project/app/src/main/res/menu/main_navigation.xml" value="0.1875" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/attendance_background.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/attendance_progressbar.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/attendance_progressbar1.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/attendance_progressbar2.xml" value="0.15729166666666666" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/attendance_progressbar3.xml" value="0.15729166666666666" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/attendance_progressbg.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/boxframe.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/home_card_design3.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/tableframe.xml" value="0.26979166666666665" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/drawable/timetable_background.xml" value="0.26979166666666665" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/attendance_child_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/attendance_form.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/attendance_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/attendance_parent_list.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/attendance_temp_list.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/attendance_tmp_form.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/attendance_tmp_list.xml" value="0.264" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/child_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/grade_child_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/grade_form.xml" value="0.264" />
@@ -99,6 +110,7 @@
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/lectureplan_form.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/lectureplan_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/login_form.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/main_home_card4_form.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/majorpoten_form.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/majorpoten_list.xml" value="0.264" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/menu_form.xml" value="0.4" />
@@ -106,6 +118,8 @@
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/normalpoten_list.xml" value="0.4" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/parent_list.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/qr_form.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/temp_poten_select_form.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/timetable_form.xml" value="0.15081521739130435" />
         <entry key="..\:/Users/yeomd/practiceProject/app/src/main/res/layout/tuition_form.xml" value="0.4" />
       </map>
     </option>

@@ -61,6 +61,12 @@ public class TuitionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tuition_form);
 
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.qr_toolbar);
+        setSupportActionBar(mToolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("");
+
         Intent intent = getIntent();
         String token = ((userClass) getApplication()).getToken();
         String id = ((userClass) getApplication()).getId();
@@ -81,12 +87,6 @@ public class TuitionActivity extends AppCompatActivity {
         totAmt = (TextView) findViewById(R.id.tuition_totamt);        // 등록금합계
         regAmt = (TextView) findViewById(R.id.tuition_regamt);        // 납부금액
         tmpAcct = (TextView) findViewById(R.id.tuition_tmpacct);     // 신한은행 가상계좌
-
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.qr_toolbar);
-        setSupportActionBar(mToolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("");
 
         new Thread(new Runnable() {
             @Override

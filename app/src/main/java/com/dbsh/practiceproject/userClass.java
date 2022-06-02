@@ -18,9 +18,17 @@ public class userClass extends Application {
     private String schYR;           // 학년
     private String sch_REG_STAT_NM; // 재학 휴학 여부(한글표기)
     private String token;           // 로그인 토큰
+    private ArrayList<String> lectlist;         // 해당학기 수강과목 학수번호
+    private ArrayList<String> lectnumlist;      // 해당학기 수강과목 학수번호
+    private ArrayList<String> lecttimelist;     // 해당학기 수강과목 수업시간
+    private ArrayList<String> lectproflist;     // 해당학기 수강과목 담당교수
     private ArrayList<String> yearlist;    // 년도 정리
 
     public userClass() {
+        lectlist = new ArrayList<>();
+        lectnumlist = new ArrayList<>();
+        lecttimelist = new ArrayList<>();
+        lectproflist = new ArrayList<>();
         yearlist = new ArrayList<>();
     }
 
@@ -41,6 +49,10 @@ public class userClass extends Application {
         this.sch_REG_STAT_NM = sch_REG_STAT_NM;
     }
     public void setToken(String token) { this.token = token; }
+    public void addLectlist(String lect) {this.lectlist.add(lect); }
+    public void addLectnumlist(String lect_num) {this.lectnumlist.add(lect_num); }
+    public void addLecttimelist(String lect_time) {this.lecttimelist.add(lect_time); }
+    public void addLectproflist(String prof_num) {this.lectproflist.add(prof_num); }
     public void addYearlist(String year) { this.yearlist.add(year); }
 
     public String getId() { return this.id; }
@@ -55,8 +67,16 @@ public class userClass extends Application {
     public String getSchTerm() { return this.schTerm; }
     public String getSchYR() { return this.schYR; }
     public String getToken() { return this.token; }
+    public ArrayList<String> getLectlist() { return this.lectlist; }
+    public ArrayList<String> getLectnumlist() { return this.lectnumlist; }
+    public ArrayList<String> getLecttimelist() { return this.lecttimelist; }
+    public ArrayList<String> getLectproflist() { return this.lectproflist; }
     public ArrayList<String> getYearlist() { return this.yearlist; }
 
+    public void clearLectlist() { this.lectlist.clear(); }
+    public void clearLectnumlist() { this.lectnumlist.clear(); }
+    public void clearLecttimelist() { this.lecttimelist.clear(); }
+    public void clearLectproflist() { this.lectproflist.clear(); }
     public void clearYearlist() {
         this.yearlist.clear();
     }
