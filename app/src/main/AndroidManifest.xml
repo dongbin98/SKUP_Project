@@ -34,6 +34,7 @@
         <activity android:name=".TempPotenSelectActivity"/>
         <activity android:name=".ScholarshipActivity"/>
         <activity android:name=".AttendanceTmpActivity"/>
+        <activity android:name=".AttendanceDetailActivity"/>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>

@@ -2,6 +2,7 @@ package com.dbsh.practiceproject;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -28,6 +29,17 @@ public class AttendanceTmpAdapter extends RecyclerView.Adapter<RecyclerView.View
 
     Context context;
 
+    //아이템 클릭 리스너 인터페이스
+    interface OnItemClickListener{
+        void onItemClick(View v, int position); //뷰와 포지션값
+    }
+    //리스너 객체 참조 변수
+    private OnItemClickListener mListener = null;
+    //리스너 객체 참조를 어댑터에 전달 메서드
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.mListener = listener;
+    }
+
     public void dataClear() {data.clear();}
     public AttendanceTmpAdapter(List<AttendanceItem> data) {
         this.data = data;
@@ -53,23 +65,24 @@ public class AttendanceTmpAdapter extends RecyclerView.Adapter<RecyclerView.View
         
         if(Integer.parseInt(item.text3) == 100) {
             // 파란색 막대기
-            System.out.println("파랑입니다");
         }
         else if(Integer.parseInt(item.text3) >= 75 && Integer.parseInt(item.text3) < 100) {
             // 주황색 막대기
-            System.out.println("주황입니다");
             itemController.attendance_progressbar.setProgressDrawable(context.getDrawable(R.drawable.attendance_progressbar2));
         }
         else {
             // 빨간색 막대기
-            System.out.println("빨강입니다");
             itemController.attendance_progressbar.setProgressDrawable(context.getDrawable(R.drawable.attendance_progressbar3));
         }
         
-        itemController.itemView.setOnClickListener(new View.OnClickListener() {
+        itemController.itemView.setOnClickListener (new View.OnClickListener () {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(view.getContext(), "무야호", Toast.LENGTH_SHORT).show();
+                if (position!=RecyclerView.NO_POSITION){
+                    if (mListener!=null){
+                        mListener.onItemClick (view,position);
+                    }
+                }
             }
         });
         itemController.attendance_progressbar.setProgress(item.percent);

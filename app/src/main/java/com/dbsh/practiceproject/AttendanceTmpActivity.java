@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -35,6 +36,8 @@ public class AttendanceTmpActivity extends AppCompatActivity {
     String term;
 
     List<AttendanceTmpAdapter.AttendanceItem> data = new ArrayList<>();
+    ArrayList<String> CDList = new ArrayList<>();   // 학수번호 따로 저장
+    ArrayList<String> NUMBList = new ArrayList<>(); // 분반번호 따로 저장
     AttendanceTmpAdapter adapter;
     RecyclerView attendanceList;
 
@@ -58,6 +61,26 @@ public class AttendanceTmpActivity extends AppCompatActivity {
         attendanceList = (RecyclerView) findViewById(R.id.attendance_recyclerview);
 
         adapter = new AttendanceTmpAdapter(data);
+        adapter.setOnItemClickListener (new AttendanceTmpAdapter.OnItemClickListener () {
+
+            //아이템 클릭시 토스트메시지
+            @Override
+            public void onItemClick(View v, int position) {
+                String title = data.get(position).text;
+                int percent = data.get(position).percent;
+                String cd = CDList.get(position);
+                String numb = NUMBList.get(position);
+                int time = Integer.parseInt(((userClass) getApplication()).getLecttimelist().get(position));
+
+                Intent detailIntent = new Intent(AttendanceTmpActivity.this, AttendanceDetailActivity.class);
+                detailIntent.putExtra("TITLE", title);
+                detailIntent.putExtra("PERCENT", percent);
+                detailIntent.putExtra("CD", cd);
+                detailIntent.putExtra("NUMB", numb);
+                detailIntent.putExtra("TIME", time);
+                startActivity(detailIntent);
+            }
+        });
 
         attendanceList.setLayoutManager(new LinearLayoutManager(this));
         attendanceList.setAdapter(adapter);
@@ -76,6 +99,8 @@ public class AttendanceTmpActivity extends AppCompatActivity {
                 });
             }
         }).start();
+
+        System.out.println("CDList Size() : " + CDList.size());
     }
 
     public boolean getAttendance(String token, String id, String year, String term) {
@@ -111,6 +136,8 @@ public class AttendanceTmpActivity extends AppCompatActivity {
                             jsonArray.getJSONObject(i).get("SUBJ_CD").toString(),
                             jsonArray.getJSONObject(i).get("CLSS_NUMB").toString(),
                             i);
+                    CDList.add(jsonArray.getJSONObject(i).get("SUBJ_CD").toString());
+                    NUMBList.add(jsonArray.getJSONObject(i).get("CLSS_NUMB").toString());
                     data.add(new AttendanceTmpAdapter.AttendanceItem(
                             jsonArray.getJSONObject(i).get("SUBJ_NM").toString(),
                             jsonArray.getJSONObject(i).get("SUBJ_CLSS").toString(),
